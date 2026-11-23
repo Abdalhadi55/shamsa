@@ -2,8 +2,8 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>شمسة روف توب - خلدا | Shamsa Rooftop Experience</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <title>شمسة روف توب - خلدا | Shamsa Rooftop Khalda</title>
 
   <!-- Google Fonts: Amiri & Cairo (Arabic) + Playfair Display & Plus Jakarta Sans (English) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -17,13 +17,15 @@
       theme: {
         extend: {
           colors: {
-            obsidian: '#070709',
-            charcoal: '#111216',
-            gold: '#DFAD5F',
-            goldLight: '#F4D292',
-            goldDark: '#B37E2E',
-            olive: '#7E9067',
-            cream: '#F6F0E6',
+            ivory: '#FAF8F3',
+            limestone: '#F2EDE2',
+            sage: '#667758',
+            sageDark: '#4D5B42',
+            sageSoft: '#E7ECE2',
+            oliveInk: '#2C3527',
+            oliveMuted: '#5C6755',
+            brass: '#B89055',
+            cedar: '#8F4A3A',
           }
         }
       }
@@ -32,11 +34,13 @@
 
   <style>
     :root {
-      --gold: #DFAD5F;
-      --gold-light: #F4D292;
-      --gold-rgb: 223, 173, 95;
-      --obsidian: #070709;
-      --cream: #F6F0E6;
+      --ivory: #FAF8F3;
+      --limestone: #F2EDE2;
+      --sage: #667758;
+      --sage-dark: #4D5B42;
+      --olive-ink: #2C3527;
+      --brass: #B89055;
+      --cedar: #8F4A3A;
     }
 
     * {
@@ -49,98 +53,71 @@
       padding: 0;
       width: 100%;
       height: 100%;
+      height: 100dvh;
       overflow: hidden;
-      background-color: var(--obsidian);
-      color: var(--cream);
+      background-color: var(--ivory);
+      color: var(--olive-ink);
       overscroll-behavior: none;
     }
 
-    /* Language-Specific Luxury Typography */
-    html[lang="ar"] body {
-      font-family: 'Cairo', sans-serif;
-    }
-    html[lang="en"] body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-    }
-    html[lang="ar"] .font-editorial {
-      font-family: 'Amiri', serif;
-    }
-    html[lang="en"] .font-editorial {
-      font-family: 'Playfair Display', serif;
-    }
+    html[lang="ar"] body { font-family: 'Cairo', sans-serif; }
+    html[lang="en"] body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    html[lang="ar"] .font-editorial { font-family: 'Amiri', serif; }
+    html[lang="en"] .font-editorial { font-family: 'Playfair Display', serif; }
 
-    /* ===================== CINEMATIC PRELOADER ===================== */
+    /* ===================== 1. FAST & SMOOTH PRELOADER ===================== */
     #preloader {
       position: fixed;
       inset: 0;
       z-index: 100;
-      background: radial-gradient(circle at 50% 45%, #16130E 0%, #070709 75%);
+      background: radial-gradient(circle at 50% 45%, #FAF8F3 0%, #EFE9DC 100%);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      transition: opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1), transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+      transition: opacity 0.6s ease, transform 0.6s ease;
     }
     #preloader.curtain-up {
       opacity: 0;
-      transform: scale(1.06);
+      transform: scale(1.03);
       pointer-events: none;
     }
 
-    .gold-sweep-text {
-      background: linear-gradient(
-        110deg,
-        #9c7233 0%,
-        #DFAD5F 30%,
-        #FFF6DF 50%,
-        #DFAD5F 70%,
-        #9c7233 100%
-      );
-      background-size: 240% auto;
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      animation: goldSweep 1.5s ease-in-out forwards;
-    }
-    @keyframes goldSweep {
-      0% { background-position: 160% center; opacity: 0; transform: translateY(12px); }
-      35% { opacity: 1; transform: translateY(0); }
-      100% { background-position: -40% center; opacity: 1; }
-    }
-
-    .preloader-line {
-      width: 0%;
+    .sage-line {
+      width: 0;
       height: 1.5px;
-      background: linear-gradient(90deg, transparent, #DFAD5F, #FFF4D6, #DFAD5F, transparent);
-      animation: lineGrow 1.25s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      background: linear-gradient(90deg, transparent, #667758, #B89055, #667758, transparent);
+      animation: lineExpand 0.95s cubic-bezier(0.22, 1, 0.36, 1) forwards;
     }
-    @keyframes lineGrow {
-      0% { width: 0%; opacity: 0; }
-      100% { width: 220px; opacity: 1; }
+    @keyframes lineExpand {
+      0% { width: 0; opacity: 0; }
+      100% { width: 200px; opacity: 1; }
     }
 
-    /* ===================== SPATIAL 3D WALKTHROUGH STAGE ===================== */
+    /* ===================== 2. GPU-ACCELERATED WALKTHROUGH STAGE ===================== */
     #walkthrough-stage {
       position: fixed;
       inset: 0;
       width: 100vw;
       height: 100vh;
-      height: 100svh;
+      height: 100dvh;
       overflow: hidden;
       z-index: 1;
-      perspective: 1400px;
-      background: #070709;
+      background: #E9E2D3;
       touch-action: none;
       cursor: ns-resize;
     }
 
     .zone-scene {
       position: absolute;
-      inset: -7%;
-      width: 114%;
-      height: 114%;
-      will-change: transform, opacity, filter;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      will-change: transform, opacity;
       transform-style: preserve-3d;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
       pointer-events: none;
     }
 
@@ -150,135 +127,72 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      filter: brightness(0.72) contrast(1.06) saturate(1.08);
+      filter: none;
+      image-rendering: auto;
     }
 
-    /* Architectural Depth Overlays matching Shamsa Khalda's Real Spaces */
-    .glass-skylight-roof {
-      position: absolute;
-      top: -12%;
-      left: -12%;
+    /* Crop out only the green EVENING strip on Zone 1 with minimal stretch */
+    .zone-0-img {
+      left: 0;
+      right: auto;
       width: 124%;
-      height: 54%;
-      transform-origin: top center;
-      transform: perspective(950px) rotateX(-60deg);
-      background-image:
-        linear-gradient(to right, rgba(12, 14, 18, 0.84) 3px, transparent 3px),
-        linear-gradient(to bottom, rgba(12, 14, 18, 0.72) 4px, rgba(255, 244, 224, 0.07) 4px, transparent 16px);
-      background-size: 98px 76px;
-      mask-image: linear-gradient(to bottom, black 22%, transparent 94%);
-      -webkit-mask-image: linear-gradient(to bottom, black 22%, transparent 94%);
+      max-width: none;
+      object-fit: cover;
+      object-position: left center;
     }
 
-    .checkered-patio {
-      position: absolute;
-      bottom: -20%;
-      left: -32%;
-      width: 164%;
-      height: 58%;
-      transform-origin: bottom center;
-      transform: perspective(760px) rotateX(75deg);
-      background-color: #141417;
-      background-image:
-        linear-gradient(45deg, rgba(246, 240, 230, 0.30) 25%, transparent 25%),
-        linear-gradient(-45deg, rgba(246, 240, 230, 0.30) 25%, transparent 25%),
-        linear-gradient(45deg, transparent 75%, rgba(246, 240, 230, 0.30) 75%),
-        linear-gradient(-45deg, transparent 75%, rgba(246, 240, 230, 0.30) 75%);
-      background-size: 74px 74px;
-      background-position: 0 0, 0 37px, 37px -37px, -37px 0;
-      mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.9) 24%, transparent 92%);
-      -webkit-mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.9) 24%, transparent 92%);
+    /* Keep photos 100% natural with no hazy vignette wash */
+    .lens-vignette {
+      display: none;
     }
 
-    .pergola-ceiling {
-      position: absolute;
-      top: -12%;
-      left: -15%;
-      width: 130%;
-      height: 52%;
-      transform-origin: top center;
-      transform: perspective(880px) rotateX(-62deg);
-      background-image:
-        repeating-linear-gradient(
-          to bottom,
-          rgba(38, 24, 14, 0.92) 0px,
-          rgba(54, 34, 20, 0.92) 20px,
-          rgba(223, 173, 95, 0.14) 20px,
-          rgba(255, 224, 166, 0.07) 52px
-        ),
-        repeating-linear-gradient(
-          to right,
-          rgba(28, 18, 11, 0.85) 0px,
-          rgba(28, 18, 11, 0.85) 14px,
-          transparent 14px,
-          transparent 148px
-        );
-      mask-image: linear-gradient(to bottom, black 32%, transparent 95%);
-      -webkit-mask-image: linear-gradient(to bottom, black 32%, transparent 95%);
+    /* Crop out the green EVENING sidebar on the right edge of Zone 1 photo */
+    .zone-0-img {
+      left: 0;
+      right: auto;
+      width: 136%;
+      max-width: none;
+      object-fit: cover;
+      object-position: 28% center;
     }
 
-    .globe-pendant {
-      position: absolute;
-      top: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      pointer-events: none;
-    }
-    .globe-wire {
-      width: 1.5px;
-      background: linear-gradient(to bottom, rgba(255,255,255,0.12), rgba(255,255,255,0.55));
-    }
-    .globe-orb {
-      border-radius: 9999px;
-      background: radial-gradient(circle at 38% 34%, #ffffff 0%, #fff6e6 55%, #DFAD5F 100%);
-      box-shadow: 0 0 28px rgba(255, 234, 190, 0.85), 0 0 70px rgba(223, 173, 95, 0.5);
-    }
-
-    .alfurn-stripe {
-      background: repeating-linear-gradient(90deg, #27402A 0px, #27402A 11px, #F6F0E6 11px, #F6F0E6 22px);
-    }
-
-    .fire-heater-glow {
-      position: absolute;
-      bottom: 14%;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 440px;
-      height: 190px;
-      border-radius: 9999px;
-      background: radial-gradient(ellipse at center, rgba(255, 132, 38, 0.36) 0%, rgba(223, 173, 95, 0.14) 48%, transparent 74%);
-      filter: blur(24px);
-      animation: heaterPulse 3.2s ease-in-out infinite alternate;
-    }
-    @keyframes heaterPulse {
-      0% { opacity: 0.6; transform: translateX(-50%) scale(0.95); }
-      100% { opacity: 1; transform: translateX(-50%) scale(1.08); }
-    }
-
-    /* Atmospheric Canvas (Volumetric God Rays, Dust Motes, Embers) */
-    #atmosphere-canvas {
-      position: fixed;
-      inset: 0;
-      width: 100vw;
-      height: 100vh;
-      height: 100svh;
-      z-index: 6;
-      pointer-events: none;
-    }
-
-    /* Cinematic Lens Vignette */
+    /* Light Edge Shading Only so Photos Stay Crystal Clear */
     .lens-vignette {
       position: fixed;
       inset: 0;
       z-index: 7;
       pointer-events: none;
       background:
-        radial-gradient(ellipse at 50% 46%, rgba(7, 7, 9, 0) 38%, rgba(7, 7, 9, 0.78) 100%),
-        linear-gradient(to bottom, rgba(7, 7, 9, 0.74) 0%, rgba(7, 7, 9, 0) 20%, rgba(7, 7, 9, 0) 75%, rgba(7, 7, 9, 0.92) 100%);
+        linear-gradient(to bottom, rgba(44, 53, 39, 0.24) 0%, rgba(44, 53, 39, 0) 18%, rgba(44, 53, 39, 0) 78%, rgba(44, 53, 39, 0.32) 100%);
     }
 
-    /* ===================== FLOATING PULSING GOLD HOTSPOT PINS ===================== */
+    /* ===================== 3. SHAMSA CREAM & SAGE FROSTED GLASS UI ===================== */
+    .shamsa-glass-nav {
+      background: rgba(250, 248, 243, 0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(102, 119, 88, 0.26);
+      box-shadow: 0 12px 32px rgba(44, 53, 39, 0.14);
+    }
+
+    .shamsa-glass-dock {
+      background: rgba(250, 248, 243, 0.94);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(102, 119, 88, 0.28);
+      box-shadow: 0 18px 46px rgba(44, 53, 39, 0.2);
+    }
+
+    .btn-sage {
+      background: linear-gradient(135deg, #6E8060 0%, #58684B 100%);
+      color: #FAF8F3;
+      box-shadow: 0 8px 22px rgba(102, 119, 88, 0.32);
+      transition: transform 0.15s ease, filter 0.2s ease;
+    }
+    .btn-sage:hover { filter: brightness(1.06); }
+    .btn-sage:active { transform: scale(0.97); }
+
+    /* ===================== 4. FLOATING DISH HOTSPOTS ===================== */
     #hotspots-layer {
       position: fixed;
       inset: 0;
@@ -288,124 +202,74 @@
 
     .hotspot-pin {
       position: absolute;
-      transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%) scale(0.94);
       display: flex;
       align-items: center;
-      gap: 10px;
-      padding: 6px 14px 6px 8px;
+      gap: 8px;
+      padding: 5px 12px 5px 6px;
       border-radius: 9999px;
-      background: rgba(12, 13, 16, 0.72);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(223, 173, 95, 0.48);
-      box-shadow: 0 14px 36px rgba(0, 0, 0, 0.65), 0 0 24px rgba(223, 173, 95, 0.22);
+      background: rgba(250, 248, 243, 0.93);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1.5px solid rgba(102, 119, 88, 0.45);
+      box-shadow: 0 10px 26px rgba(44, 53, 39, 0.22);
       cursor: pointer;
       pointer-events: none;
       opacity: 0;
-      transition: opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1), transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.25s ease, box-shadow 0.25s ease;
+      transition: opacity 0.32s ease, transform 0.32s ease;
+      max-width: 44vw;
     }
-    html[dir="ltr"] .hotspot-pin {
-      padding: 6px 14px 6px 8px;
-    }
-    html[dir="rtl"] .hotspot-pin {
-      padding: 6px 8px 6px 14px;
-    }
+    html[dir="rtl"] .hotspot-pin { padding: 5px 6px 5px 12px; }
 
     .hotspot-pin.visible {
       opacity: 1;
       pointer-events: auto;
+      transform: translate(-50%, -50%) scale(1);
     }
 
-    .hotspot-pin.visible:hover {
-      border-color: #F4D292;
-      box-shadow: 0 18px 44px rgba(0, 0, 0, 0.8), 0 0 36px rgba(223, 173, 95, 0.5);
-      transform: translate(-50%, -54%) scale(1.05);
+    .hotspot-pin.visible:active {
+      transform: translate(-50%, -50%) scale(0.96);
     }
 
-    .hotspot-pulse-ring {
-      position: relative;
-      width: 34px;
-      height: 34px;
+    .hotspot-thumb {
+      width: 32px;
+      height: 32px;
       border-radius: 9999px;
       overflow: hidden;
       flex-shrink: 0;
-      border: 1.5px solid #DFAD5F;
-      box-shadow: 0 0 14px rgba(223, 173, 95, 0.55);
-    }
-    .hotspot-pulse-ring::after {
-      content: '';
-      position: absolute;
-      inset: -4px;
-      border-radius: 9999px;
-      border: 1.5px solid rgba(223, 173, 95, 0.7);
-      animation: hotspotPing 2.2s cubic-bezier(0, 0, 0.2, 1) infinite;
-    }
-    @keyframes hotspotPing {
-      0% { transform: scale(0.95); opacity: 0.9; }
-      100% { transform: scale(1.55); opacity: 0; }
+      border: 1.5px solid #667758;
+      background: #E7ECE2;
     }
 
-    /* ===================== LUXURY FROSTED GLASS UTILITIES ===================== */
-    .glass-nav {
-      background: rgba(11, 12, 15, 0.64);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(246, 240, 230, 0.11);
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
-    }
-
-    .glass-dock {
-      background: rgba(10, 11, 14, 0.84);
-      backdrop-filter: blur(26px);
-      -webkit-backdrop-filter: blur(26px);
-      border: 1px solid rgba(223, 173, 95, 0.24);
-      box-shadow: 0 24px 64px rgba(0, 0, 0, 0.82);
-    }
-
-    .btn-champagne {
-      background: linear-gradient(135deg, #F0C87C 0%, #DFAD5F 48%, #B88232 100%);
-      color: #070709;
-      box-shadow: 0 10px 28px rgba(223, 173, 95, 0.34);
-      transition: transform 0.18s ease, filter 0.2s ease, box-shadow 0.25s ease;
-    }
-    .btn-champagne:hover {
-      filter: brightness(1.07);
-      box-shadow: 0 14px 34px rgba(223, 173, 95, 0.48);
-    }
-    .btn-champagne:active {
-      transform: scale(0.97);
-    }
-
-    /* Side Progress Indicator */
+    /* Side Progress Rail */
     .zone-rail-dot {
-      width: 8px;
-      height: 8px;
+      width: 7px;
+      height: 7px;
       border-radius: 9999px;
-      background: rgba(246, 240, 230, 0.28);
-      transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+      background: rgba(102, 119, 88, 0.35);
+      transition: all 0.28s ease;
       cursor: pointer;
     }
     .zone-rail-dot.active {
-      height: 28px;
-      background: #DFAD5F;
-      box-shadow: 0 0 16px rgba(223, 173, 95, 0.85);
+      height: 24px;
+      background: #667758;
     }
 
-    /* ===================== APPLE VISION PRO 3D INSPECTION MODAL ===================== */
+    /* ===================== 5. 3D DISH INSPECTION MODAL ===================== */
     #inspect-modal {
       position: fixed;
       inset: 0;
       z-index: 70;
-      background: rgba(7, 7, 9, 0.62);
-      backdrop-filter: blur(22px);
-      -webkit-backdrop-filter: blur(22px);
+      background: rgba(44, 53, 39, 0.5);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 16px;
       opacity: 0;
       pointer-events: none;
-      transition: opacity 0.36s cubic-bezier(0.22, 1, 0.36, 1);
+      transition: opacity 0.28s ease;
     }
     #inspect-modal.open {
       opacity: 1;
@@ -413,228 +277,241 @@
     }
 
     #inspect-perspective {
-      perspective: 1200px;
+      perspective: 1100px;
       width: 100%;
-      max-width: 450px;
+      max-width: 420px;
     }
 
     #inspect-card-3d {
       position: relative;
-      border-radius: 30px;
+      border-radius: 26px;
       overflow: hidden;
-      background: rgba(14, 15, 19, 0.86);
-      border: 1px solid rgba(223, 173, 95, 0.45);
-      box-shadow: 0 42px 110px rgba(0, 0, 0, 0.88), 0 0 60px rgba(223, 173, 95, 0.16);
+      background: #FAF8F3;
+      border: 1.5px solid rgba(102, 119, 88, 0.38);
+      box-shadow: 0 28px 75px rgba(44, 53, 39, 0.34);
       transform-style: preserve-3d;
       will-change: transform;
-      cursor: grab;
       touch-action: none;
     }
-    #inspect-card-3d:active {
-      cursor: grabbing;
-    }
 
-    /* Real-time Specular Glass Glare Sweep */
     #inspect-glare {
       position: absolute;
       inset: 0;
       z-index: 20;
       pointer-events: none;
       opacity: 0;
-      transition: opacity 0.25s ease;
-      mix-blend-mode: screen;
+      transition: opacity 0.2s ease;
     }
 
-    /* Scroll Hint Gentle Float */
-    @keyframes hintFloat {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-5px); }
-    }
-    .animate-hint {
-      animation: hintFloat 2.3s ease-in-out infinite;
+    /* Menu Dotted Leader Line */
+    .menu-leader {
+      flex: 1;
+      height: 1px;
+      border-bottom: 1.5px dotted rgba(102, 119, 88, 0.38);
+      margin: 0 8px;
+      min-width: 12px;
     }
 
-    /* Clean Hidden Scrollbars */
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
   </style>
 </head>
-<body class="antialiased selection:bg-gold/30 selection:text-cream">
+<body>
+  <!-- Reusable SVG Botanical Mandala Ornament -->
+  <svg width="0" height="0" class="absolute">
+    <defs>
+      <g id="shamsa-mandala" fill="none" stroke="rgba(102, 119, 88, 0.24)" stroke-width="1.35">
+        <circle cx="100" cy="100" r="24" />
+        <circle cx="100" cy="100" r="44" stroke-dasharray="4 3" />
+        <path d="M100,14 C112,38 112,56 100,76 C88,56 88,38 100,14 Z" />
+        <path d="M100,186 C112,162 112,144 100,124 C88,144 88,162 100,186 Z" />
+        <path d="M14,100 C38,88 56,88 76,100 C56,112 38,112 14,100 Z" />
+        <path d="M186,100 C162,88 144,88 124,100 C144,112 162,112 186,100 Z" />
+        <path d="M39,39 C64,48 77,61 83,83 C61,77 48,64 39,39 Z" />
+        <path d="M161,161 C136,152 123,139 117,117 C139,123 152,136 161,161 Z" />
+        <path d="M161,39 C152,64 139,77 117,83 C123,61 136,48 161,39 Z" />
+        <path d="M39,161 C48,136 61,123 83,117 C77,139 64,152 39,161 Z" />
+        <circle cx="100" cy="100" r="88" stroke-dasharray="2 6" />
+      </g>
+    </defs>
+  </svg>
 
-  <!-- ===================== 1. CINEMATIC 1.4S PRELOADER ===================== -->
+  <!-- ===================== 1. FAST CINEMATIC PRELOADER ===================== -->
   <div id="preloader" aria-label="Loading Shamsa Rooftop">
-    <div class="text-center px-6">
-      <div class="font-editorial text-5xl sm:text-7xl font-bold gold-sweep-text tracking-wide leading-tight">
-        شمسة <span class="opacity-45 font-light mx-1">|</span> SHAMSA
+    <svg class="w-40 h-40 mb-2 opacity-80" viewBox="0 0 200 200"><use href="#shamsa-mandala"/></svg>
+    <div class="text-center px-6 -mt-20">
+      <div class="font-editorial text-5xl sm:text-6xl font-bold text-sage tracking-wide leading-tight">
+        شمسة <span class="text-brass/60 font-light mx-1">|</span> SHAMSA
       </div>
-      <div class="preloader-line mx-auto my-4"></div>
-      <p class="text-[11px] sm:text-xs font-bold tracking-[0.38em] text-goldLight/80 uppercase">
-        KHALDA • AMMAN
+      <div class="sage-line mx-auto my-3"></div>
+      <p class="text-[11px] font-extrabold tracking-[0.34em] text-oliveMuted uppercase">
+        ROOFTOP • KHALDA
       </p>
     </div>
   </div>
 
-  <!-- ===================== 2. FULL-SCREEN SPATIAL 3D WALKTHROUGH ===================== -->
+  <!-- ===================== 2. FULL-SCREEN 4-ZONE WALKTHROUGH ===================== -->
   <main id="walkthrough-stage">
 
-    <!-- ZONE 1 (0%–25%): The Stone Walkway Entrance -->
+    <!-- ZONE 1: Stone Archway Entrance (Right green EVENING strip cropped cleanly) -->
     <section id="zone-0" class="zone-scene">
       <img
-        src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=1800&q=85"
-        alt="Shamsa Rooftop Stone Walkway Entrance"
-        class="zone-bg-img"
-        onerror="this.style.display='none'; this.parentElement.style.background='radial-gradient(circle at 50% 35%, #5b3b1e 0%, #1a1511 58%, #070709 100%)';"
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMQliODljqAUxWCgpGJn5QIDleHdbJRO-wY9ROMoB6YA&s=10"
+        alt="شمسة روف توب - الممر الحجري والمدخل"
+        class="zone-bg-img zone-0-img"
+        loading="eager"
+        decoding="async"
+        onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1400&q=80';"
       />
-      <div class="absolute inset-0 bg-gradient-to-t from-[#070709] via-[#1b140d]/35 to-[#DFAD5F]/20"></div>
-      <div class="absolute top-[20%] left-1/2 -translate-x-1/2 w-[68vw] max-w-[680px] h-[34vh] rounded-full bg-[#DFAD5F]/22 blur-[95px]"></div>
     </section>
 
-    <!-- ZONE 2 (25%–50%): The Glass-Roof Lounge -->
+    <!-- ZONE 2: Glass Roof Lounge -->
     <section id="zone-1" class="zone-scene opacity-0">
       <img
-        src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1800&q=85"
-        alt="Shamsa Glass-Roof Lounge"
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbZkTTEbEkzErXOMovSyk7bZSFM5RRWrdlgkDTfH_tiA&s=10"
+        alt="شمسة روف توب - صالة السقف الزجاجي"
         class="zone-bg-img"
-        onerror="this.style.display='none'; this.parentElement.style.background='radial-gradient(circle at 50% 25%, #3c4833 0%, #151714 58%, #070709 100%)';"
+        decoding="async"
+        onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1400&q=80';"
       />
-      <div class="absolute inset-0 bg-gradient-to-t from-[#070709]/92 via-[#151714]/32 to-[#7E9067]/16"></div>
-      <div class="glass-skylight-roof"></div>
-
-      <!-- Signature Glowing White Globe Pendant Lamps -->
-      <div class="globe-pendant left-[20%]">
-        <div class="globe-wire h-24 sm:h-36"></div>
-        <div class="globe-orb w-10 h-10 sm:w-14 sm:h-14"></div>
-      </div>
-      <div class="globe-pendant left-[50%] -translate-x-1/2">
-        <div class="globe-wire h-16 sm:h-24"></div>
-        <div class="globe-orb w-8 h-8 sm:w-11 sm:h-11"></div>
-      </div>
-      <div class="globe-pendant right-[20%]">
-        <div class="globe-wire h-28 sm:h-40"></div>
-        <div class="globe-orb w-10 h-10 sm:w-14 sm:h-14"></div>
-      </div>
     </section>
 
-    <!-- ZONE 3 (50%–75%): Shamsa Plaza & Al-Furn -->
+    <!-- ZONE 3: Shamsa Courtyard & Al-Furn -->
     <section id="zone-2" class="zone-scene opacity-0">
       <img
-        src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1800&q=85"
-        alt="Shamsa Plaza & Al-Furn Patio"
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxTSJe8gI6weupy5OtLd9IfMZPz_3TqB1fKDGX26CfNw&s=10"
+        alt="شمسة روف توب - ساحة شمسة والفرن"
         class="zone-bg-img"
-        onerror="this.style.display='none'; this.parentElement.style.background='radial-gradient(circle at 50% 38%, #3c2e20 0%, #121215 60%, #070709 100%)';"
+        decoding="async"
+        onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1400&q=80';"
       />
-      <div class="absolute inset-0 bg-gradient-to-t from-[#070709] via-[#131214]/40 to-[#070709]/45"></div>
-      <div class="checkered-patio"></div>
-      <div class="fire-heater-glow"></div>
-
-      <!-- Integrated Architectural Signage: "شمسة" & "الفرن" -->
-      <div class="absolute top-[24%] sm:top-[22%] left-1/2 -translate-x-1/2 flex items-center gap-3.5 opacity-90">
-        <div class="px-4 py-1.5 rounded-2xl glass-nav border border-gold/45 shadow-[0_0_30px_rgba(223,173,95,0.28)]">
-          <span class="font-editorial text-2xl sm:text-3xl font-bold text-goldLight">شمسة</span>
-        </div>
-        <div class="rounded-2xl overflow-hidden glass-nav border border-cream/20">
-          <div class="alfurn-stripe h-2.5 w-full"></div>
-          <div class="px-4 py-1">
-            <span class="font-editorial text-xl sm:text-2xl font-bold text-cream">الفرن</span>
-          </div>
-        </div>
-      </div>
     </section>
 
-    <!-- ZONE 4 (75%–100%): Sunset Pergola & Hookah Terrace -->
+    <!-- ZONE 4: Golden Hour Pergola Terrace -->
     <section id="zone-3" class="zone-scene opacity-0">
       <img
-        src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1800&q=85"
-        alt="Shamsa Sunset Pergola & Hookah Terrace"
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5S36AVb4FThGcpOCI6iqGFadG7ThU0dHkejD7XiuuEg&s=10"
+        alt="شمسة روف توب - تراس الغروب والأرجيلة"
         class="zone-bg-img"
-        onerror="this.style.display='none'; this.parentElement.style.background='radial-gradient(circle at 75% 25%, #8a511e 0%, #241810 55%, #070709 100%)';"
+        decoding="async"
+        onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1400&q=80';"
       />
-      <div class="absolute inset-0 bg-gradient-to-tr from-[#070709]/95 via-[#291a0d]/42 to-[#DFAD5F]/28"></div>
-      <div class="pergola-ceiling"></div>
+    </section>
 
-      <!-- Receding Row of Glowing Globe Lamps -->
-      <div class="globe-pendant right-[15%] opacity-95">
-        <div class="globe-wire h-28 sm:h-36"></div>
-        <div class="globe-orb w-11 h-11 sm:w-14 sm:h-14"></div>
-      </div>
-      <div class="globe-pendant right-[31%] opacity-85">
-        <div class="globe-wire h-20 sm:h-28"></div>
-        <div class="globe-orb w-8 h-8 sm:w-10 sm:h-10"></div>
-      </div>
-      <div class="globe-pendant right-[45%] opacity-70">
-        <div class="globe-wire h-16 sm:h-22"></div>
-        <div class="globe-orb w-6 h-6 sm:w-8 sm:h-8"></div>
-      </div>
-      <div class="globe-pendant left-[22%] opacity-90">
-        <div class="globe-wire h-24 sm:h-32"></div>
-        <div class="globe-orb w-9 h-9 sm:w-12 sm:h-12"></div>
-      </div>
+    <!-- ZONE 2: Glass Roof Lounge -->
+    <section id="zone-1" class="zone-scene opacity-0">
+      <img
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbZkTTEbEkzErXOMovSyk7bZSFM5RRWrdlgkDTfH_tiA&s=10"
+        alt="شمسة روف توب - صالة السقف الزجاجي"
+        class="zone-bg-img"
+        decoding="async"
+        onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1400&q=80';"
+      />
+      <div class="absolute inset-0 bg-gradient-to-t from-oliveInk/25 via-transparent to-transparent"></div>
+    </section>
+
+    <!-- ZONE 3: Shamsa Courtyard & Al-Furn -->
+    <section id="zone-2" class="zone-scene opacity-0">
+      <img
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxTSJe8gI6weupy5OtLd9IfMZPz_3TqB1fKDGX26CfNw&s=10"
+        alt="شمسة روف توب - ساحة شمسة والفرن"
+        class="zone-bg-img"
+        decoding="async"
+        onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1400&q=80';"
+      />
+      <div class="absolute inset-0 bg-gradient-to-t from-oliveInk/25 via-transparent to-transparent"></div>
+    </section>
+
+    <!-- ZONE 4: Golden Hour Pergola Terrace -->
+    <section id="zone-3" class="zone-scene opacity-0">
+      <img
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5S36AVb4FThGcpOCI6iqGFadG7ThU0dHkejD7XiuuEg&s=10"
+        alt="شمسة روف توب - تراس الغروب والأرجيلة"
+        class="zone-bg-img"
+        decoding="async"
+        onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1400&q=80';"
+      />
+      <div class="absolute inset-0 bg-gradient-to-tr from-oliveInk/25 via-transparent to-transparent"></div>
     </section>
 
   </main>
 
-  <!-- Volumetric Sunbeams, Floating Sunset Dust Motes & Fire Embers Canvas -->
-  <canvas id="atmosphere-canvas"></canvas>
   <div class="lens-vignette"></div>
 
-  <!-- ===================== 3. DYNAMIC ARCHITECTURAL ZONE TITLE OVERLAY ===================== -->
-  <div id="zone-hero-copy" class="fixed top-[15%] sm:top-[16%] left-1/2 -translate-x-1/2 z-10 w-[92%] max-w-2xl text-center pointer-events-none transition-all duration-500">
-    <div id="zone-kicker" class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full glass-nav border border-gold/35 text-[10px] sm:text-xs font-bold tracking-[0.18em] text-goldLight uppercase mb-2.5">
+  <!-- ===================== 3. ZONE ARCHITECTURAL TITLE OVERLAY ===================== -->
+  <div id="zone-hero-copy" class="fixed top-[13%] sm:top-[14%] left-1/2 -translate-x-1/2 z-10 w-[92%] max-w-2xl text-center pointer-events-none transition-all duration-300">
+    <div id="zone-kicker" class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full shamsa-glass-nav text-[10px] sm:text-xs font-extrabold tracking-[0.16em] text-sageDark uppercase mb-2">
       01 / 04 • خلدا، عمّان
     </div>
-    <h1 id="zone-headline" class="font-editorial text-3xl sm:text-5xl md:text-6xl font-bold text-cream drop-shadow-[0_6px_30px_rgba(0,0,0,0.75)] leading-tight">
+    <h1 id="zone-headline" class="font-editorial text-3xl sm:text-5xl md:text-6xl font-bold text-ivory drop-shadow-[0_4px_22px_rgba(44,53,39,0.78)] leading-tight">
       الممر الحجري والمدخل
     </h1>
-    <p id="zone-subline" class="text-xs sm:text-sm md:text-base text-cream/85 mt-2 max-w-lg mx-auto leading-relaxed">
-      أقواس حجرية معمارية تحيط بها النباتات الخضراء نحو أفق غروب خلدا الساحر
+    <p id="zone-subline" class="text-xs sm:text-sm md:text-base text-ivory drop-shadow-[0_2px_12px_rgba(44,53,39,0.9)] mt-1.5 max-w-lg mx-auto leading-relaxed font-bold">
+      أقواس حجرية دافئة تحيط بها أشجار الزيتون والنباتات الخضراء نحو أجواء شمسة الهادئة
     </p>
+
+    <!-- Zone 1 Dessert Spotlight Pill -->
+    <div id="dessert-spotlight" class="mt-2.5 flex justify-center pointer-events-auto transition-all duration-300">
+      <button onclick="openMenuDrawer('desserts')" class="shamsa-glass-nav px-3.5 py-1.5 rounded-full flex items-center gap-1.5 text-[10px] sm:text-xs font-extrabold text-oliveInk hover:bg-ivory transition shadow-md">
+        <span>🍰</span>
+        <span id="dessert-spotlight-text">لا تفوّت الحلويات: كعكة التمر بالكراميل (4.55 د.أ) وأم علي (5.00 د.أ) ←</span>
+      </button>
+    </div>
   </div>
 
-  <!-- ===================== 4. FLOATING PHOTOREALISTIC HOTSPOTS LAYER ===================== -->
+  <!-- ===================== 4. FLOATING DISH HOTSPOTS ===================== -->
   <div id="hotspots-layer"></div>
 
-  <!-- ===================== 5. MINIMAL SIDE ZONE PROGRESS RAIL ===================== -->
-  <aside id="zone-rail" class="fixed top-1/2 -translate-y-1/2 left-3.5 sm:left-6 z-30 flex flex-col items-center gap-3 glass-nav py-3 px-2 rounded-full">
+  <!-- Persistent Welcome Message Visible on ALL 4 Pages -->
+  <div id="welcome-spotlight" class="fixed bottom-[82px] sm:bottom-[88px] left-1/2 -translate-x-1/2 z-20 transition-all duration-300 w-[92%] max-w-lg text-center pointer-events-none">
+    <div class="shamsa-glass-nav px-4 py-2 rounded-2xl border border-sage/40 shadow-lg">
+      <p id="welcome-spotlight-text" class="text-[11px] sm:text-xs font-extrabold text-oliveInk leading-relaxed">
+        🌿 أهلاً وسهلاً بكم في شمسة روف توب — نورتوا خلدا، يسعدنا دائماً خدمتكم وأجمل الأوقات برفقتنا ✨
+      </p>
+    </div>
+  </div>
+
+  <!-- ===================== 5. SIDE PROGRESS RAIL ===================== -->
+  <aside id="zone-rail" class="fixed top-1/2 -translate-y-1/2 left-2.5 sm:left-5 z-30 flex flex-col items-center gap-2.5 shamsa-glass-nav py-2.5 px-1.5 rounded-full">
     <button onclick="glideToZone(0)" class="zone-rail-dot active" data-zone-dot="0" aria-label="Zone 1"></button>
     <button onclick="glideToZone(1)" class="zone-rail-dot" data-zone-dot="1" aria-label="Zone 2"></button>
     <button onclick="glideToZone(2)" class="zone-rail-dot" data-zone-dot="2" aria-label="Zone 3"></button>
     <button onclick="glideToZone(3)" class="zone-rail-dot" data-zone-dot="3" aria-label="Zone 4"></button>
   </aside>
 
-  <!-- ===================== 6. TOP LUXURY NAVIGATION BAR (WITH AR / EN TOGGLE) ===================== -->
-  <header class="fixed top-0 left-0 right-0 z-40 px-3 sm:px-6 pt-3 pointer-events-none">
-    <div class="max-w-7xl mx-auto glass-nav rounded-2xl px-3.5 sm:px-5 py-2.5 flex items-center justify-between gap-2 pointer-events-auto">
+  <!-- ===================== 6. TOP SHAMSA CREAM & SAGE NAVBAR ===================== -->
+  <header class="fixed top-0 left-0 right-0 z-40 px-2.5 sm:px-6 pt-2.5 pointer-events-none">
+    <div class="max-w-6xl mx-auto shamsa-glass-nav rounded-2xl px-3.5 sm:px-5 py-2 flex items-center justify-between gap-2 pointer-events-auto">
 
-      <!-- Brand Logo + Live Status -->
-      <div class="flex items-center gap-2.5 sm:gap-3.5 min-w-0">
-        <button onclick="glideToZone(0)" class="flex items-center gap-2 shrink-0">
-          <span class="font-editorial text-2xl sm:text-3xl font-bold text-gold leading-none">شمسة</span>
-          <span class="hidden sm:inline-block h-5 w-[1px] bg-white/15"></span>
-          <span class="hidden sm:inline-block text-[11px] font-extrabold tracking-[0.22em] text-cream/90 uppercase">SHAMSA</span>
-        </button>
-
-        <!-- Live Open Status Pill -->
-        <div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/5 border border-white/10 shrink-0">
-          <span class="relative flex h-2 w-2">
-            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-            <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-          </span>
-          <span id="nav-live-status" class="text-[10px] sm:text-[11px] font-bold text-emerald-300 whitespace-nowrap">مفتوح الآن • أجواء الغروب</span>
-        </div>
+      <!-- Left/Right: Live Status -->
+      <div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-sageSoft border border-sage/25 shrink-0">
+        <span class="relative flex h-2 w-2">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-sage opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-sage"></span>
+        </span>
+        <span id="nav-live-status" class="text-[10px] sm:text-xs font-extrabold text-sageDark whitespace-nowrap">مفتوح الآن</span>
       </div>
 
-      <!-- Center: Live Match / Oud Event Night Badge (Desktop & Tablet) -->
-      <button onclick="openBookingModal('match')" class="hidden lg:flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gold/10 hover:bg-gold/20 border border-gold/30 text-[11px] font-bold text-goldLight transition">
-        <span>🎸</span>
-        <span id="nav-event-badge">الخميس 10 مساءً • سهرة عود ومباراة القمة</span>
+      <!-- Center: Shamsa Logo + Zone Dots -->
+      <button onclick="glideToZone(0)" class="flex flex-col items-center leading-none">
+        <div class="flex items-center gap-1.5">
+          <span class="font-editorial text-2xl sm:text-3xl font-bold text-sage leading-none">شمسة</span>
+          <span class="text-[10px] sm:text-xs font-extrabold tracking-[0.2em] text-oliveMuted uppercase">ROOFTOP • KHALDA</span>
+        </div>
+        <div class="flex items-center gap-1 mt-1">
+          <span class="w-3.5 h-1 rounded-full bg-sage transition-all" data-top-dot="0"></span>
+          <span class="w-1.5 h-1 rounded-full bg-sage/30 transition-all" data-top-dot="1"></span>
+          <span class="w-1.5 h-1 rounded-full bg-sage/30 transition-all" data-top-dot="2"></span>
+          <span class="w-1.5 h-1 rounded-full bg-sage/30 transition-all" data-top-dot="3"></span>
+        </div>
       </button>
 
-      <!-- Language Switcher Pill: EN | عربي -->
-      <div class="flex items-center gap-1 p-1 rounded-full bg-black/50 border border-gold/35 shrink-0" role="group" aria-label="Language Switcher">
-        <button id="lang-btn-en" onclick="setLanguage('en')" class="px-2.5 sm:px-3 py-1 rounded-full text-[11px] font-extrabold tracking-wider transition text-cream/65 hover:text-cream">
+      <!-- Language Switcher: EN | عربي -->
+      <div class="flex items-center gap-1 p-1 rounded-full bg-limestone border border-sage/30 shrink-0" role="group" aria-label="Language Switcher">
+        <button id="lang-btn-en" onclick="setLanguage('en')" class="px-2.5 sm:px-3 py-1 rounded-full text-[11px] font-extrabold tracking-wider transition text-oliveMuted hover:text-oliveInk">
           EN
         </button>
-        <button id="lang-btn-ar" onclick="setLanguage('ar')" class="px-2.5 sm:px-3 py-1 rounded-full text-[11px] font-extrabold transition bg-gold text-obsidian shadow">
+        <button id="lang-btn-ar" onclick="setLanguage('ar')" class="px-2.5 sm:px-3 py-1 rounded-full text-[11px] font-extrabold transition bg-sage text-ivory shadow-sm">
           عربي
         </button>
       </div>
@@ -642,88 +519,78 @@
     </div>
   </header>
 
-  <!-- ===================== 7. SUBTLE WALK HINT (FADES OUT ONCE WALKING) ===================== -->
-  <div id="walk-hint" class="fixed bottom-24 left-1/2 -translate-x-1/2 z-25 pointer-events-none transition-all duration-500">
-    <div class="animate-hint glass-nav px-4 sm:px-5 py-2 rounded-full border border-gold/40 flex items-center gap-2 shadow-2xl">
-      <span class="text-gold text-xs font-black">↕</span>
-      <span id="walk-hint-text" class="text-[11px] sm:text-xs font-bold text-cream whitespace-nowrap">اسحب أو مرّر في أي مكان للمشي داخل شمسة</span>
-    </div>
-  </div>
+  <!-- ===================== 7. BOTTOM QUICK-SERVICE DOCK (6 BUTTONS: MAP NEXT TO CHARCOAL) ===================== -->
+  <nav class="fixed bottom-0 left-0 right-0 z-40 px-2 sm:px-4 pt-2 pointer-events-none" style="padding-bottom: max(0.75rem, env(safe-area-inset-bottom));">
+    <div class="max-w-3xl mx-auto shamsa-glass-dock rounded-2xl p-1.5 grid grid-cols-6 gap-1 sm:gap-1.5 pointer-events-auto">
 
-  <!-- ===================== 8. FLOATING GLASS BOTTOM SERVICE DOCK (5 ACTIONS) ===================== -->
-  <nav class="fixed bottom-0 left-0 right-0 z-40 px-2.5 sm:px-4 pb-3 pt-2 bg-gradient-to-t from-[#070709] via-[#070709]/92 to-transparent pointer-events-none">
-    <div class="max-w-2xl mx-auto glass-dock rounded-2xl p-1.5 grid grid-cols-5 gap-1 sm:gap-1.5 pointer-events-auto">
-
-      <button onclick="openServiceModal('coal')" class="flex flex-col sm:flex-row items-center justify-center gap-0.5 sm:gap-1.5 py-2 px-1 rounded-xl bg-white/5 hover:bg-white/10 active:bg-gold/20 transition">
-        <span class="text-base leading-none">🔥</span>
-        <span data-i18n="dockCoal" class="text-[10px] sm:text-xs font-extrabold text-cream">تبديل فحم</span>
+      <button onclick="openServiceModal('coal')" class="flex flex-col sm:flex-row items-center justify-center gap-0.5 sm:gap-1 py-2 px-0.5 rounded-xl bg-limestone/85 hover:bg-sageSoft active:scale-95 border border-sage/15 transition">
+        <span class="text-sm sm:text-base leading-none">🔥</span>
+        <span data-i18n="dockCoal" class="text-[9.5px] sm:text-xs font-extrabold text-oliveInk whitespace-nowrap">تبديل فحم</span>
       </button>
 
-      <button onclick="openServiceModal('bill')" class="flex flex-col sm:flex-row items-center justify-center gap-0.5 sm:gap-1.5 py-2 px-1 rounded-xl bg-white/5 hover:bg-white/10 active:bg-gold/20 transition">
-        <span class="text-base leading-none">🧾</span>
-        <span data-i18n="dockBill" class="text-[10px] sm:text-xs font-extrabold text-cream">طلب الحساب</span>
+      <a href="https://maps.google.com/?q=Shamsa+Rooftop+Khalda+Amman" target="_blank" rel="noopener" class="flex flex-col sm:flex-row items-center justify-center gap-0.5 sm:gap-1 py-2 px-0.5 rounded-xl bg-limestone/85 hover:bg-sageSoft active:scale-95 border border-sage/15 transition">
+        <span class="text-sm sm:text-base leading-none">📍</span>
+        <span data-i18n="dockMap" class="text-[9.5px] sm:text-xs font-extrabold text-oliveInk whitespace-nowrap">الخريطة</span>
+      </a>
+
+      <button onclick="openServiceModal('bill')" class="flex flex-col sm:flex-row items-center justify-center gap-0.5 sm:gap-1 py-2 px-0.5 rounded-xl bg-limestone/85 hover:bg-sageSoft active:scale-95 border border-sage/15 transition">
+        <span class="text-sm sm:text-base leading-none">🧾</span>
+        <span data-i18n="dockBill" class="text-[9.5px] sm:text-xs font-extrabold text-oliveInk whitespace-nowrap">طلب الحساب</span>
       </button>
 
-      <button onclick="openBookingModal()" class="flex flex-col sm:flex-row items-center justify-center gap-0.5 sm:gap-1.5 py-2 px-1 rounded-xl bg-white/5 hover:bg-white/10 active:bg-gold/20 transition">
-        <span class="text-base leading-none">📅</span>
-        <span data-i18n="dockBook" class="text-[10px] sm:text-xs font-extrabold text-cream">احجز طاولة</span>
+      <button onclick="openBookingModal()" class="flex flex-col sm:flex-row items-center justify-center gap-0.5 sm:gap-1 py-2 px-0.5 rounded-xl bg-limestone/85 hover:bg-sageSoft active:scale-95 border border-sage/15 transition">
+        <span class="text-sm sm:text-base leading-none">📅</span>
+        <span data-i18n="dockBook" class="text-[9.5px] sm:text-xs font-extrabold text-oliveInk whitespace-nowrap">حجز طاولة</span>
       </button>
 
-      <button onclick="openMenuDrawer('menu')" class="flex flex-col sm:flex-row items-center justify-center gap-0.5 sm:gap-1.5 py-2 px-1 rounded-xl bg-white/5 hover:bg-white/10 active:bg-gold/20 transition">
-        <span class="text-base leading-none">🍽️</span>
-        <span data-i18n="dockMenu" class="text-[10px] sm:text-xs font-extrabold text-cream">المنيو</span>
+      <button onclick="openMenuDrawer('all')" class="flex flex-col sm:flex-row items-center justify-center gap-0.5 sm:gap-1 py-2 px-0.5 rounded-xl bg-limestone/85 hover:bg-sageSoft active:scale-95 border border-sage/15 transition">
+        <span class="text-sm sm:text-base leading-none">🍽️</span>
+        <span data-i18n="dockMenu" class="text-[9.5px] sm:text-xs font-extrabold text-oliveInk whitespace-nowrap">المنيو</span>
       </button>
 
-      <button onclick="openMenuDrawer('cart')" class="relative flex flex-col sm:flex-row items-center justify-center gap-0.5 sm:gap-1.5 py-2 px-1 rounded-xl bg-gold/20 border border-gold/45 hover:bg-gold/30 transition">
-        <span class="text-base leading-none">🛒</span>
+      <button onclick="openOrderModal()" class="relative flex flex-col sm:flex-row items-center justify-center gap-0.5 sm:gap-1 py-2 px-0.5 rounded-xl btn-sage">
+        <span class="text-sm sm:text-base leading-none">🛒</span>
         <div class="flex flex-col items-center leading-tight">
-          <span data-i18n="dockOrder" class="text-[10px] sm:text-xs font-extrabold text-cream">طلبي</span>
-          <span id="dock-total-jod" class="text-[9px] sm:text-[10px] font-black text-goldLight">0.00 د.أ</span>
+          <span data-i18n="dockOrder" class="text-[9.5px] sm:text-xs font-extrabold text-ivory">طلبي</span>
+          <span id="dock-total-jod" class="text-[8.5px] sm:text-[10px] font-bold text-brass">0.00 د.أ</span>
         </div>
-        <span id="dock-count-badge" class="hidden absolute -top-1.5 -left-1.5 min-w-[19px] h-[19px] px-1 rounded-full bg-gold text-obsidian text-[10px] font-black flex items-center justify-center shadow-lg">0</span>
+        <span id="dock-count-badge" class="hidden absolute -top-1.5 -left-1.5 min-w-[18px] h-[18px] px-1 rounded-full bg-cedar text-ivory text-[9px] font-black flex items-center justify-center shadow-md border border-ivory">0</span>
       </button>
 
     </div>
   </nav>
 
-  <!-- ===================== 9. APPLE VISION PRO 3D TILT INSPECTION MODAL ===================== -->
+  <!-- ===================== 8. DISH 3D INSPECTION MODAL ===================== -->
   <div id="inspect-modal" role="dialog" aria-modal="true">
     <div id="inspect-perspective">
       <div id="inspect-card-3d">
-        <!-- Dynamic Specular Glare Sweep -->
         <div id="inspect-glare"></div>
 
-        <!-- Close Button -->
-        <button id="close-inspect-btn" class="absolute top-4 left-4 z-30 w-9 h-9 rounded-full bg-black/60 hover:bg-black/85 border border-white/20 text-cream flex items-center justify-center backdrop-blur-md transition" aria-label="Close">
+        <button id="close-inspect-btn" class="absolute top-3.5 left-3.5 z-30 w-9 h-9 rounded-full bg-ivory/90 hover:bg-ivory border border-sage/30 text-oliveInk flex items-center justify-center shadow-md transition" aria-label="Close">
           ✕
         </button>
 
-        <!-- High-Res Real Photo -->
-        <div class="relative h-64 sm:h-72 w-full overflow-hidden">
+        <div class="relative h-56 sm:h-64 w-full overflow-hidden bg-limestone">
           <img id="ins-img" src="" alt="" class="w-full h-full object-cover" />
-          <div class="absolute inset-0 bg-gradient-to-t from-[#0E0F13] via-transparent to-black/30"></div>
-          <span id="ins-badge" class="absolute top-4 right-4 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-gold/45 text-[11px] font-extrabold text-goldLight"></span>
-          <div class="absolute bottom-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/15 text-[10px] text-cream/85 whitespace-nowrap">
-            <span id="ins-tilt-hint">👆 حرّك إصبعك لتدوير البطاقة بتقنية 3D</span>
-          </div>
+          <div class="absolute inset-0 bg-gradient-to-t from-ivory via-transparent to-black/15"></div>
+          <span id="ins-badge" class="absolute top-3.5 right-3.5 px-3 py-1 rounded-full bg-ivory/90 border border-sage/35 text-[11px] font-extrabold text-sageDark shadow-sm"></span>
         </div>
 
-        <!-- Content -->
-        <div class="p-5 sm:p-6 space-y-4">
+        <div class="p-5 sm:p-6 space-y-3.5 relative bg-ivory">
           <div class="flex items-start justify-between gap-3">
             <div>
-              <h3 id="ins-title" class="font-editorial text-2xl sm:text-3xl font-bold text-cream leading-snug"></h3>
-              <span id="ins-meta" class="inline-block mt-1 px-2.5 py-0.5 rounded-full bg-white/5 border border-white/10 text-[10px] font-bold text-goldLight"></span>
+              <h3 id="ins-title" class="font-editorial text-2xl sm:text-3xl font-bold text-sage leading-snug"></h3>
+              <span id="ins-cat-label" class="inline-block mt-1 px-2.5 py-0.5 rounded-full bg-sageSoft text-[10px] font-extrabold text-sageDark"></span>
             </div>
-            <div id="ins-price-box" class="shrink-0 bg-gold/15 border border-gold/40 rounded-2xl px-3.5 py-1.5 text-center">
-              <span id="ins-price" class="text-lg font-black text-goldLight block leading-tight"></span>
-              <span id="ins-currency" class="text-[10px] font-bold text-cream/70">د.أ</span>
+            <div class="shrink-0 bg-sageSoft border border-sage/35 rounded-2xl px-3.5 py-1.5 text-center">
+              <span id="ins-price" class="text-lg font-black text-sageDark block leading-tight"></span>
+              <span id="ins-currency" class="text-[10px] font-bold text-oliveMuted">د.أ</span>
             </div>
           </div>
 
-          <p id="ins-desc" class="text-xs sm:text-sm text-cream/80 leading-relaxed"></p>
+          <p id="ins-desc" class="text-xs sm:text-sm text-oliveInk/85 leading-relaxed"></p>
 
-          <button id="ins-cta-btn" class="w-full btn-champagne font-black text-sm py-3.5 px-5 rounded-2xl text-center">
+          <button id="ins-add-btn" class="w-full btn-sage font-black text-sm py-3.5 px-5 rounded-2xl text-center">
             + أضف إلى طلبي
           </button>
         </div>
@@ -731,210 +598,227 @@
     </div>
   </div>
 
-  <!-- ===================== 10. FULL LUXURY MENU & SMART BILL CALCULATOR DRAWER ===================== -->
-  <div id="menu-overlay" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300"></div>
-  <aside id="menu-drawer" class="fixed top-0 bottom-0 right-0 z-[55] w-full max-w-lg glass-dock border-l border-gold/25 flex flex-col translate-x-full transition-transform duration-300 ease-out">
-    <!-- Drawer Header -->
-    <div class="p-5 border-b border-white/10 flex items-center justify-between gap-3">
-      <div>
-        <h2 id="drawer-heading" class="font-editorial text-2xl font-bold text-goldLight">منيو شمسة روف توب</h2>
-        <p id="drawer-sub" class="text-xs text-cream/65 mt-0.5">اختر أصنافك واحسب فاتورتك بالدينار مباشرة</p>
+  <!-- ===================== 9. SHAMSA OFFICIAL MENU DRAWER (ALL REAL ITEMS & PRICES) ===================== -->
+  <div id="menu-overlay" class="fixed inset-0 z-50 bg-oliveInk/45 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-250"></div>
+  <aside id="menu-drawer" class="fixed top-0 bottom-0 right-0 z-[55] w-full max-w-xl bg-ivory border-l border-sage/30 flex flex-col translate-x-full transition-transform duration-300 ease-out shadow-2xl">
+    <svg class="pointer-events-none absolute -top-12 -right-12 w-48 h-48 opacity-65" viewBox="0 0 200 200"><use href="#shamsa-mandala"/></svg>
+
+    <!-- Drawer Header + Location Link -->
+    <div class="relative z-10 p-4 sm:p-5 border-b border-sage/20 bg-ivory/95">
+      <div class="flex items-center justify-between gap-2 mb-3">
+        <div>
+          <h2 id="drawer-heading" class="font-editorial text-2xl sm:text-3xl font-bold text-sage">منيو شمسة روف توب</h2>
+          <p id="drawer-sub" class="text-xs text-oliveMuted">جميع الأصناف والأسعار الرسمية • خلدا، عمّان</p>
+        </div>
+        <div class="flex items-center gap-2 shrink-0">
+          <a href="https://maps.google.com/?q=Shamsa+Rooftop+Khalda+Amman" target="_blank" rel="noopener" class="px-3 py-2 rounded-xl bg-sageSoft hover:bg-sage hover:text-ivory border border-sage/30 text-xs font-extrabold text-sageDark transition flex items-center gap-1">
+            <span>📍</span>
+            <span id="drawer-map-label">الخريطة</span>
+          </a>
+          <button id="close-menu-btn" class="w-9 h-9 rounded-xl bg-limestone hover:bg-sageSoft text-oliveInk flex items-center justify-center border border-sage/25">✕</button>
+        </div>
       </div>
-      <button id="close-menu-btn" class="w-9 h-9 rounded-xl bg-white/10 hover:bg-white/20 text-cream flex items-center justify-center shrink-0">✕</button>
+
+      <!-- Search Input -->
+      <input id="menu-search-input" type="text" placeholder="ابحث عن صنف... (مثال: طبلية، منسف، كعكة التمر، موهيتو)" class="w-full bg-limestone/80 border border-sage/30 focus:border-sage rounded-xl px-3.5 py-2 text-xs text-oliveInk placeholder-oliveMuted outline-none" />
     </div>
 
-    <!-- Category Tabs -->
-    <div id="menu-cats-bar" class="px-5 py-3 flex items-center gap-2 overflow-x-auto no-scrollbar border-b border-white/10 shrink-0"></div>
+    <!-- Category Tabs (Auto-highlights with Scroll-Spy when viewing All!) -->
+    <div id="menu-cats-bar" class="relative z-10 px-4 py-2.5 flex items-center gap-1.5 overflow-x-auto no-scrollbar border-b border-sage/15 bg-limestone/55 shrink-0"></div>
 
     <!-- Menu Items List -->
-    <div id="menu-items-container" class="flex-1 overflow-y-auto p-5 space-y-3"></div>
+    <div id="menu-items-container" class="relative z-10 flex-1 overflow-y-auto p-4 sm:p-5 space-y-5"></div>
 
-    <!-- Smart Bill Calculator Footer -->
-    <div class="p-4 border-t border-white/10 bg-[#070709]/95 space-y-3">
-      <div class="space-y-1 text-xs">
-        <div class="flex items-center justify-between text-cream/70">
-          <span id="bill-subtotal-label">المجموع الفرعي</span>
-          <span id="bill-subtotal-val" class="font-bold">0.00 د.أ</span>
+    <!-- Tax Note & Order Action -->
+    <div class="relative z-10 p-4 border-t border-sage/20 bg-limestone/90 space-y-2.5" style="padding-bottom: max(1rem, env(safe-area-inset-bottom));">
+      <p id="menu-tax-note" class="text-[10px] text-center text-oliveMuted">
+        *تخضع جميع الأسعار المذكورة أعلاه للضريبة ورسوم الخدمة • Prices are subject to sales tax and service charge
+      </p>
+      <div class="flex items-center justify-between gap-3">
+        <div>
+          <span id="drawer-total-lbl" class="text-[11px] text-oliveMuted block">إجمالي طلبك</span>
+          <span id="drawer-total-val" class="text-lg font-black text-sageDark">0.00 د.أ</span>
         </div>
-        <div class="flex items-center justify-between text-cream/55 text-[11px]">
-          <span id="bill-service-label">الخدمة والضريبة (شاملة)</span>
-          <span id="bill-service-val">مشمولة ✓</span>
-        </div>
-        <div class="flex items-center justify-between pt-1.5 border-t border-white/10 text-base font-black text-goldLight">
-          <span id="bill-total-label">الإجمالي النهائي</span>
-          <span id="bill-total-val">0.00 د.أ</span>
-        </div>
-      </div>
-
-      <div class="grid grid-cols-3 gap-2">
-        <button id="send-order-wa-btn" class="col-span-2 btn-champagne font-black text-xs sm:text-sm py-3.5 px-3 rounded-2xl">
-          إرسال الطلب عبر واتساب 💬
-        </button>
-        <button id="waiter-view-btn" class="bg-white/10 hover:bg-white/15 border border-white/15 text-cream font-bold text-xs py-3.5 px-2 rounded-2xl transition">
-          عرض للجرسون
+        <button onclick="closeMenuDrawer(); openOrderModal();" id="drawer-review-btn" class="btn-sage font-extrabold text-xs sm:text-sm px-5 py-3 rounded-2xl">
+          مراجعة الطلب وإرساله 🛒
         </button>
       </div>
     </div>
   </aside>
 
-  <!-- ===================== 11. SMART TABLE RESERVATION MODAL ===================== -->
-  <div id="booking-modal" class="fixed inset-0 z-[65] bg-black/80 backdrop-blur-md flex items-end sm:items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
-    <div class="glass-dock w-full max-w-md rounded-3xl p-6 space-y-4 max-h-[90svh] overflow-y-auto no-scrollbar">
-      <div class="flex items-center justify-between border-b border-white/10 pb-3">
+  <!-- ===================== 10. FLEXIBLE TABLE RESERVATION MODAL (NO MATCHES) ===================== -->
+  <div id="booking-modal" class="fixed inset-0 z-[65] bg-oliveInk/55 backdrop-blur-sm flex items-end sm:items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-250">
+    <div class="relative w-full max-w-md bg-ivory rounded-3xl p-5 sm:p-6 border border-sage/35 shadow-2xl space-y-4 max-h-[90dvh] overflow-y-auto no-scrollbar">
+      <div class="flex items-center justify-between border-b border-sage/20 pb-3">
         <div>
-          <h3 id="bk-heading" class="font-editorial text-2xl font-bold text-goldLight">حجز طاولة في شمسة</h3>
-          <p id="bk-sub" class="text-xs text-cream/65">تأكيد فوري عبر واتساب بدون انتظار</p>
+          <h3 id="bk-heading" class="font-editorial text-2xl font-bold text-sage">حجز طاولة في شمسة</h3>
+          <p id="bk-sub" class="text-xs text-oliveMuted">تحكم كامل بالوقت وعدد الأشخاص • تأكيد عبر واتساب</p>
         </div>
-        <button id="close-booking-btn" class="w-8 h-8 rounded-xl bg-white/10 text-cream">✕</button>
+        <button id="close-booking-btn" class="w-8 h-8 rounded-xl bg-limestone text-oliveInk border border-sage/20">✕</button>
       </div>
 
       <form id="booking-form" class="space-y-4">
         <!-- Zone Selection -->
         <div>
-          <label id="bk-zone-label" class="block text-xs font-bold text-cream/80 mb-2">اختر المنطقة المفضلة</label>
+          <label id="bk-zone-label" class="block text-xs font-extrabold text-oliveInk mb-1.5">اختر المنطقة المفضلة</label>
           <div id="bk-zones-grid" class="grid grid-cols-2 gap-2"></div>
         </div>
 
-        <!-- Name & Guests -->
-        <div class="grid grid-cols-2 gap-3">
-          <div>
-            <label id="bk-name-label" for="bk-name" class="block text-xs font-bold text-cream/75 mb-1">الاسم الكريم</label>
-            <input id="bk-name" type="text" required class="w-full bg-white/5 border border-white/15 focus:border-gold rounded-xl px-3.5 py-2.5 text-xs text-cream outline-none" />
-          </div>
-          <div>
-            <label id="bk-guests-label" for="bk-guests" class="block text-xs font-bold text-cream/75 mb-1">عدد الأشخاص</label>
-            <select id="bk-guests" class="w-full bg-[#111216] border border-white/15 focus:border-gold rounded-xl px-3 py-2.5 text-xs text-cream outline-none">
-              <option value="2">2</option>
-              <option value="4" selected>4</option>
-              <option value="6">6</option>
-              <option value="8">8</option>
-              <option value="10">10</option>
-              <option value="12+">12+</option>
-            </select>
-          </div>
-        </div>
-
-        <!-- Date & Time -->
-        <div class="grid grid-cols-2 gap-3">
-          <div>
-            <label id="bk-date-label" for="bk-date" class="block text-xs font-bold text-cream/75 mb-1">التاريخ</label>
-            <input id="bk-date" type="date" required class="w-full bg-white/5 border border-white/15 focus:border-gold rounded-xl px-3 py-2.5 text-xs text-cream outline-none [color-scheme:dark]" />
-          </div>
-          <div>
-            <label id="bk-time-label" for="bk-time" class="block text-xs font-bold text-cream/75 mb-1">الوقت</label>
-            <select id="bk-time" class="w-full bg-[#111216] border border-white/15 focus:border-gold rounded-xl px-3 py-2.5 text-xs text-cream outline-none"></select>
-          </div>
-        </div>
-
-        <!-- Optional Occasion -->
+        <!-- Name -->
         <div>
-          <label id="bk-occ-label" class="block text-xs font-bold text-cream/80 mb-2">المناسبة (اختياري)</label>
-          <div id="bk-occ-grid" class="grid grid-cols-3 gap-2"></div>
+          <label id="bk-name-label" for="bk-name" class="block text-xs font-extrabold text-oliveInk mb-1">الاسم الكريم</label>
+          <input id="bk-name" type="text" required class="w-full bg-limestone/80 border border-sage/30 focus:border-sage rounded-xl px-3.5 py-2.5 text-xs text-oliveInk outline-none" />
         </div>
 
-        <button id="bk-submit-btn" type="submit" class="w-full btn-champagne font-black text-sm py-3.5 rounded-2xl">
+        <!-- Flexible Guest Count Stepper + Direct Input (1 - 50) -->
+        <div>
+          <div class="flex items-center justify-between mb-1">
+            <label id="bk-guests-label" for="bk-guests-input" class="text-xs font-extrabold text-oliveInk">عدد الأشخاص (1 – 50)</label>
+            <div class="flex gap-1">
+              <button type="button" onclick="setGuests(2)" class="px-2 py-0.5 rounded-lg bg-sageSoft text-[10px] font-bold text-sageDark">2</button>
+              <button type="button" onclick="setGuests(4)" class="px-2 py-0.5 rounded-lg bg-sageSoft text-[10px] font-bold text-sageDark">4</button>
+              <button type="button" onclick="setGuests(8)" class="px-2 py-0.5 rounded-lg bg-sageSoft text-[10px] font-bold text-sageDark">8</button>
+              <button type="button" onclick="setGuests(15)" class="px-2 py-0.5 rounded-lg bg-sageSoft text-[10px] font-bold text-sageDark">15</button>
+            </div>
+          </div>
+          <div class="flex items-center gap-2 bg-limestone/80 border border-sage/30 rounded-xl p-1.5">
+            <button type="button" onclick="adjustGuests(-1)" class="w-9 h-9 rounded-lg bg-ivory hover:bg-sageSoft text-oliveInk font-black text-lg border border-sage/25">-</button>
+            <input id="bk-guests-input" type="number" min="1" max="50" value="4" required class="flex-1 bg-transparent text-center text-sm font-black text-oliveInk outline-none" />
+            <button type="button" onclick="adjustGuests(1)" class="w-9 h-9 rounded-lg bg-sage text-ivory font-black text-lg">+</button>
+          </div>
+        </div>
+
+        <!-- Date & Flexible Time Picker -->
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label id="bk-date-label" for="bk-date" class="block text-xs font-extrabold text-oliveInk mb-1">التاريخ</label>
+            <input id="bk-date" type="date" required class="w-full bg-limestone/80 border border-sage/30 focus:border-sage rounded-xl px-3 py-2.5 text-xs text-oliveInk outline-none" />
+          </div>
+          <div>
+            <label id="bk-time-label" for="bk-time" class="block text-xs font-extrabold text-oliveInk mb-1">الوقت (حر)</label>
+            <input id="bk-time" type="time" value="20:30" required class="w-full bg-limestone/80 border border-sage/30 focus:border-sage rounded-xl px-3 py-2.5 text-xs font-bold text-oliveInk outline-none" />
+          </div>
+        </div>
+
+        <!-- Quick Time Presets -->
+        <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar">
+          <button type="button" onclick="setBookingTime('10:30')" class="whitespace-nowrap px-2.5 py-1 rounded-lg bg-sageSoft hover:bg-sage hover:text-ivory text-[10px] font-bold text-sageDark transition">10:30 صباحاً</button>
+          <button type="button" onclick="setBookingTime('14:00')" class="whitespace-nowrap px-2.5 py-1 rounded-lg bg-sageSoft hover:bg-sage hover:text-ivory text-[10px] font-bold text-sageDark transition">2:00 ظهراً</button>
+          <button type="button" onclick="setBookingTime('18:00')" class="whitespace-nowrap px-2.5 py-1 rounded-lg bg-sageSoft hover:bg-sage hover:text-ivory text-[10px] font-bold text-sageDark transition">6:00 الغروب</button>
+          <button type="button" onclick="setBookingTime('21:00')" class="whitespace-nowrap px-2.5 py-1 rounded-lg bg-sageSoft hover:bg-sage hover:text-ivory text-[10px] font-bold text-sageDark transition">9:00 مساءً</button>
+          <button type="button" onclick="setBookingTime('23:00')" class="whitespace-nowrap px-2.5 py-1 rounded-lg bg-sageSoft hover:bg-sage hover:text-ivory text-[10px] font-bold text-sageDark transition">11:00 ليلاً</button>
+        </div>
+
+        <!-- Optional Note -->
+        <div>
+          <label id="bk-note-label" for="bk-note" class="block text-xs font-extrabold text-oliveInk mb-1">ملاحظة إضافية (اختياري)</label>
+          <input id="bk-note" type="text" class="w-full bg-limestone/80 border border-sage/30 focus:border-sage rounded-xl px-3.5 py-2 text-xs text-oliveInk outline-none" />
+        </div>
+
+        <button id="bk-submit-btn" type="submit" class="w-full btn-sage font-black text-sm py-3.5 rounded-2xl">
           تأكيد الحجز عبر واتساب 💬
         </button>
       </form>
     </div>
   </div>
 
-  <!-- ===================== 12. QUICK TABLE SERVICE MODAL (CHARCOAL & BILL: TABLES 1-20) ===================== -->
-  <div id="service-modal" class="fixed inset-0 z-[65] bg-black/80 backdrop-blur-md flex items-end sm:items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
-    <div class="glass-dock w-full max-w-md rounded-3xl p-6 space-y-4">
-      <div class="flex items-center justify-between border-b border-white/10 pb-3">
+  <!-- ===================== 11. QUICK TABLE SERVICE MODAL (TABLES 1-20) ===================== -->
+  <div id="service-modal" class="fixed inset-0 z-[65] bg-oliveInk/55 backdrop-blur-sm flex items-end sm:items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-250">
+    <div class="w-full max-w-md bg-ivory rounded-3xl p-5 sm:p-6 border border-sage/35 shadow-2xl space-y-4">
+      <div class="flex items-center justify-between border-b border-sage/20 pb-3">
         <div>
-          <h3 id="srv-title" class="font-editorial text-2xl font-bold text-goldLight">🔥 تبديل فحم فوري</h3>
-          <p id="srv-sub" class="text-xs text-cream/65 mt-0.5">اختر رقم طاولتك لإرسال تنبيه فوري للكافيه</p>
+          <h3 id="srv-title" class="font-editorial text-2xl font-bold text-sage">🔥 تبديل فحم فوري</h3>
+          <p id="srv-sub" class="text-xs text-oliveMuted mt-0.5">اختر رقم طاولتك لإرسال تنبيه فوري</p>
         </div>
-        <button id="close-srv-btn" class="w-8 h-8 rounded-xl bg-white/10 text-cream">✕</button>
+        <button id="close-srv-btn" class="w-8 h-8 rounded-xl bg-limestone text-oliveInk border border-sage/20">✕</button>
       </div>
 
-      <!-- 1-Tap Table Number Selector (Tables 1 - 20) -->
       <div>
-        <label id="srv-table-label" class="block text-xs font-bold text-cream/80 mb-2">رقم الطاولة (1 - 20)</label>
+        <label id="srv-table-label" class="block text-xs font-extrabold text-oliveInk mb-2">رقم الطاولة (1 - 20)</label>
         <div id="srv-tables-grid" class="grid grid-cols-5 gap-2"></div>
       </div>
 
-      <!-- Payment Method (Visible only for Bill Request) -->
       <div id="srv-payment-wrap" class="hidden">
-        <label id="srv-pay-label" class="block text-xs font-bold text-cream/80 mb-2">طريقة الدفع المفضلة</label>
+        <label id="srv-pay-label" class="block text-xs font-extrabold text-oliveInk mb-2">طريقة الدفع المفضلة</label>
         <div class="grid grid-cols-2 gap-2">
-          <button type="button" id="pay-cash-btn" onclick="selectPayMethod('cash')" class="py-2.5 rounded-xl text-xs font-extrabold border border-gold bg-gold/20 text-cream">
+          <button type="button" id="pay-cash-btn" onclick="selectPayMethod('cash')" class="py-2.5 rounded-xl text-xs font-extrabold border border-sage bg-sage text-ivory">
             💵 كاش / Cash
           </button>
-          <button type="button" id="pay-visa-btn" onclick="selectPayMethod('visa')" class="py-2.5 rounded-xl text-xs font-extrabold border border-white/15 bg-white/5 text-cream/75">
+          <button type="button" id="pay-visa-btn" onclick="selectPayMethod('visa')" class="py-2.5 rounded-xl text-xs font-extrabold border border-sage/25 bg-limestone text-oliveInk">
             💳 فيزا / Visa
           </button>
         </div>
       </div>
 
-      <button id="srv-send-btn" class="w-full btn-champagne font-black text-sm py-3.5 rounded-2xl">
+      <button id="srv-send-btn" class="w-full btn-sage font-black text-sm py-3.5 rounded-2xl">
         إرسال فوري عبر واتساب 💬
       </button>
     </div>
   </div>
 
-  <!-- ===================== 13. WAITER SUMMARY VIEW MODAL ===================== -->
-  <div id="waiter-modal" class="fixed inset-0 z-[75] bg-black/85 backdrop-blur-lg flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
-    <div class="glass-dock w-full max-w-sm rounded-3xl p-6 space-y-4">
-      <div class="flex items-center justify-between border-b border-white/10 pb-3">
-        <h3 id="waiter-title" class="font-editorial text-2xl font-bold text-goldLight">ملخص الطلب للجرسون</h3>
-        <button onclick="closeWaiterModal()" class="w-8 h-8 rounded-xl bg-white/10 text-cream">✕</button>
+  <!-- ===================== 12. ORDER SUMMARY & WAITER MODAL ===================== -->
+  <div id="order-modal" class="fixed inset-0 z-[70] bg-oliveInk/55 backdrop-blur-sm flex items-end sm:items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-250">
+    <div class="w-full max-w-md bg-ivory rounded-3xl p-5 sm:p-6 border border-sage/35 shadow-2xl space-y-4">
+      <div class="flex items-center justify-between border-b border-sage/20 pb-3">
+        <h3 id="ord-title" class="font-editorial text-2xl font-bold text-sage">ملخص طلبك 🛒</h3>
+        <button onclick="closeOrderModal()" class="w-8 h-8 rounded-xl bg-limestone text-oliveInk border border-sage/20">✕</button>
       </div>
-      <div id="waiter-items-list" class="space-y-2 max-h-64 overflow-y-auto text-sm"></div>
-      <div class="flex items-center justify-between pt-3 border-t border-white/10 text-lg font-black text-goldLight">
-        <span id="waiter-total-lbl">الإجمالي</span>
-        <span id="waiter-total-val">0.00 د.أ</span>
+      <div id="ord-items-list" class="space-y-2 max-h-60 overflow-y-auto text-sm"></div>
+      <div class="flex items-center justify-between pt-3 border-t border-sage/20 text-lg font-black text-sageDark">
+        <span id="ord-total-lbl">الإجمالي التقديري</span>
+        <span id="ord-total-val">0.00 د.أ</span>
       </div>
-      <button onclick="closeWaiterModal()" class="w-full bg-white/10 hover:bg-white/15 text-cream font-bold text-xs py-3 rounded-2xl">
-        إغلاق / Close
-      </button>
+      <div class="grid grid-cols-3 gap-2">
+        <button id="ord-wa-btn" class="col-span-2 btn-sage font-black text-xs sm:text-sm py-3.5 px-3 rounded-2xl">
+          إرسال عبر واتساب 💬
+        </button>
+        <button onclick="clearCart()" id="ord-clear-btn" class="bg-limestone hover:bg-cedar hover:text-ivory border border-sage/25 text-cedar font-bold text-xs py-3.5 px-2 rounded-2xl transition">
+          تفريغ
+        </button>
+      </div>
     </div>
   </div>
 
-  <!-- Custom Luxury Toast (Zero alert/confirm) -->
-  <div id="toast" class="fixed top-20 left-1/2 -translate-x-1/2 z-[90] glass-dock px-5 py-2.5 rounded-full text-xs font-extrabold text-goldLight border border-gold/45 opacity-0 pointer-events-none transition-all duration-300 -translate-y-2 whitespace-nowrap"></div>
+  <!-- Custom Toast -->
+  <div id="toast" class="fixed top-20 left-1/2 -translate-x-1/2 z-[90] shamsa-glass-nav px-5 py-2.5 rounded-full text-xs font-extrabold text-oliveInk border border-sage/45 opacity-0 pointer-events-none transition-all duration-250 -translate-y-2 whitespace-nowrap"></div>
 
   <!-- ===================== COMPLETE APPLICATION ENGINE ===================== -->
   <script>
-    /* ============================================================
-       1. CONFIGURATION & COMPLETE BILINGUAL DICTIONARY (AR / EN)
-       ============================================================ */
     const CAFE_WHATSAPP = '962790000000';
     let currentLang = 'ar';
 
+    /* ============================================================
+       1. BILINGUAL DICTIONARY (AR / EN) — ZERO MATCH REFERENCES
+       ============================================================ */
     const I18N = {
       ar: {
         currency: 'د.أ',
-        liveStatus: 'مفتوح الآن • أجواء الغروب',
-        eventBadge: 'الخميس 10 مساءً • سهرة عود ومباراة القمة',
-        walkHint: 'اسحب أو مرّر في أي مكان للمشي داخل شمسة',
+        liveStatus: 'مفتوح الآن',
+        dessertSpotlight: 'لا تفوّت الحلويات: كعكة التمر بالكراميل (4.55 د.أ) وأم علي (5.00 د.أ) ←',
+        welcomeSpotlight: '🌿 أهلاً وسهلاً بكم في شمسة روف توب — نورتوا خلدا، يسعدنا دائماً خدمتكم وأجمل الأوقات برفقتنا ✨',
         dockCoal: 'تبديل فحم',
+        dockMap: 'الخريطة',
         dockBill: 'طلب الحساب',
-        dockBook: 'احجز طاولة',
+        dockBook: 'حجز طاولة',
         dockMenu: 'المنيو',
         dockOrder: 'طلبي',
-        tiltHint: '👆 حرّك إصبعك لتدوير البطاقة بتقنية 3D',
         addOrder: '+ أضف إلى طلبي',
-        reserveSpot: 'احجز هذه الجلسة الآن 🌅',
         drawerHeading: 'منيو شمسة روف توب',
-        drawerSub: 'تصفّح الأصناف واحسب فاتورتك بالدينار مباشرة',
-        billSubtotal: 'المجموع الفرعي',
-        billService: 'الخدمة والضريبة',
-        billServiceVal: 'مشمولة ✓',
-        billTotal: 'الإجمالي النهائي',
-        sendOrderWa: 'إرسال الطلب عبر واتساب 💬',
-        waiterView: 'عرض للجرسون',
+        drawerSub: 'جميع الأصناف والأسعار الرسمية • خلدا، عمّان',
+        drawerMap: 'الخريطة',
+        searchPlaceholder: 'ابحث عن صنف... (مثال: طبلية، منسف، كعكة التمر، موهيتو)',
+        drawerTotalLbl: 'إجمالي طلبك',
+        drawerReviewBtn: 'مراجعة الطلب وإرساله 🛒',
         bkHeading: 'حجز طاولة في شمسة',
-        bkSub: 'تأكيد فوري عبر واتساب بدون انتظار',
+        bkSub: 'تحكم كامل بالوقت وعدد الأشخاص • تأكيد عبر واتساب',
         bkZoneLabel: 'اختر المنطقة المفضلة',
         bkNameLabel: 'الاسم الكريم',
-        bkNamePlaceholder: 'مثال: عمر الحياري',
-        bkGuestsLabel: 'عدد الأشخاص',
+        bkNamePlaceholder: 'مثال: زيد الحياري',
+        bkGuestsLabel: 'عدد الأشخاص (1 – 50)',
         bkDateLabel: 'التاريخ',
-        bkTimeLabel: 'الوقت',
-        bkOccLabel: 'المناسبة (اختياري)',
+        bkTimeLabel: 'الوقت (حر)',
+        bkNoteLabel: 'ملاحظة إضافية (اختياري)',
+        bkNotePlaceholder: 'مثال: طاولة قريبة من التراس أو تجهيز مناسبة',
         bkSubmit: 'تأكيد الحجز عبر واتساب 💬',
         coalTitle: '🔥 تبديل فحم فوري',
         coalSub: 'اختر رقم طاولتك ليصلك فحم جوز هند طبيعي فوراً',
@@ -945,75 +829,56 @@
         payCash: '💵 نقداً (كاش)',
         payVisa: '💳 بطاقة (فيزا)',
         srvSend: 'إرسال فوري عبر واتساب 💬',
-        waiterTitle: 'ملخص الطلب للجرسون',
-        waiterTotal: 'الإجمالي',
-        emptyCartToast: 'السلة فارغة — أضف أصنافاً من المنيو أولاً',
+        ordTitle: 'ملخص طلبك 🛒',
+        ordTotalLbl: 'الإجمالي التقديري',
+        ordWaBtn: 'إرسال عبر واتساب 💬',
+        ordClearBtn: 'تفريغ',
+        emptyCart: 'سلتك فارغة حالياً — أضف أصنافاً من المنيو أولاً',
         addedToast: 'تمت الإضافة إلى طلبك 🛒',
         zones: [
-          { kicker: '01 / 04 • خلدا، عمّان', title: 'الممر الحجري والمدخل', sub: 'أقواس حجرية معمارية تحيط بها النباتات الخضراء نحو أفق غروب خلدا الساحر' },
-          { kicker: '02 / 04 • صالة السقف الزجاجي', title: 'صالة السقف الزجاجي', sub: 'سقف زجاجي مقوّس، كنب الخيزران مع وسائد الزيتون، ومصابيح كروية دافئة حول شجرة الزيتون' },
-          { kicker: '03 / 04 • ساحة شمسة والفرن', title: 'ساحة شمسة والفرن', sub: 'أرضية الشطرنج الأيقونية، مواقد النار الزجاجية الدافئة، وفرن شمسة للمخبوزات الطازجة' },
-          { kicker: '04 / 04 • تراس الغروب', title: 'زاوية الغروب والأرجيلة', sub: 'سقف البرجولا الخشبي وأشعة الغروب الذهبية تتسلل بين سعف النخيل مع أرقى الأراجيل' }
+          { kicker: '01 / 04 • خلدا، عمّان', title: 'الممر الحجري والمدخل', sub: 'أقواس حجرية دافئة تحيط بها أشجار الزيتون والنباتات الخضراء نحو أجواء شمسة الهادئة' },
+          { kicker: '02 / 04 • صالة السقف الزجاجي', title: 'صالة السقف الزجاجي', sub: 'سقف زجاجي مقوّس وأثاث خيزران أنيق مع وسائد الزيتون ومصابيح كروية دافئة' },
+          { kicker: '03 / 04 • ساحة شمسة والفرن', title: 'ساحة شمسة والفرن', sub: 'أرضية الشطرنج الأيقونية ومواقد النار الدافئة بجانب فرن شمسة للمخبوزات الطازجة' },
+          { kicker: '04 / 04 • تراس الغروب', title: 'تراس الغروب والأرجيلة', sub: 'سقف البرجولا الخشبي وأشعة الغروب الذهبية تتسلل بين سعف النخيل على إطلالة خلدا' }
         ],
         bookingZones: [
-          { id: 'pergola', label: '🌅 زاوية الغروب والأرجيلة' },
+          { id: 'pergola', label: '🌅 تراس الغروب والأرجيلة' },
           { id: 'glass', label: '✨ صالة السقف الزجاجي' },
           { id: 'plaza', label: '🔥 ساحة شمسة والفرن' },
-          { id: 'vip', label: '👑 تراس VIP' }
-        ],
-        bookingTimes: [
-          '6:00 مساءً (وقت الغروب)',
-          '7:30 مساءً',
-          '8:30 مساءً (الأمسية)',
-          '10:30 مساءً (سهرة ليلية)',
-          '12:00 منتصف الليل'
-        ],
-        occasions: [
-          { id: 'casual', label: 'جلسة عادية' },
-          { id: 'birthday', label: '🎂 عيد ميلاد' },
-          { id: 'match', label: '⚽ ليلة مباراة' }
-        ],
-        menuCats: [
-          { id: 'all', label: 'الكل' },
-          { id: 'drinks', label: 'مشروبات مختصة' },
-          { id: 'hookah', label: 'أراجيل' },
-          { id: 'bakery', label: 'الفرن والمأكولات' },
-          { id: 'desserts', label: 'حلويات' }
+          { id: 'vip', label: '👑 جلسة خاصة' }
         ]
       },
       en: {
         currency: 'JOD',
-        liveStatus: 'Open Now • Sunset Vibe',
-        eventBadge: 'Thu 10 PM • Live Oud & Match Night',
-        walkHint: 'Scroll or Swipe Anywhere to Walk Inside Shamsa',
-        dockCoal: 'Charcoal',
+        liveStatus: 'Open Now',
+        dessertSpotlight: 'Don’t miss Desserts: Date Cake Pudding (4.55 JOD) & Um Ali (5.00 JOD) →',
+        welcomeSpotlight: '🌿 Welcome to Shamsa Rooftop — Honored to host you in Khalda, wishing you a wonderful time ✨',
+        dockCoal: 'Coal',
+        dockMap: 'Map',
         dockBill: 'Bill',
         dockBook: 'Book',
         dockMenu: 'Menu',
         dockOrder: 'Order',
-        tiltHint: '👆 Move pointer or drag to tilt card in 3D',
         addOrder: '+ Add to Order',
-        reserveSpot: 'Reserve This Spot Now 🌅',
         drawerHeading: 'Shamsa Rooftop Menu',
-        drawerSub: 'Curated signature drinks, Al-Furn bakery & luxury hookah',
-        billSubtotal: 'Subtotal',
-        billService: 'Service & Tax',
-        billServiceVal: 'Included ✓',
-        billTotal: 'Estimated Total',
-        sendOrderWa: 'Send Order via WhatsApp 💬',
-        waiterView: 'Show Waiter',
-        bkHeading: 'Reserve Your Table',
-        bkSub: 'Instant WhatsApp confirmation — zero waiting',
-        bkZoneLabel: 'Select Your Preferred Zone',
+        drawerSub: 'Official Dishes & Prices • Khalda, Amman',
+        drawerMap: 'Map',
+        searchPlaceholder: 'Search menu... (e.g. Tablieh, Mansaf, Date Cake, Mojito)',
+        drawerTotalLbl: 'Your Order Total',
+        drawerReviewBtn: 'Review & Send Order 🛒',
+        bkHeading: 'Reserve a Table at Shamsa',
+        bkSub: 'Full control over time & guest count • WhatsApp confirmation',
+        bkZoneLabel: 'Preferred Seating Area',
         bkNameLabel: 'Full Name',
         bkNamePlaceholder: 'e.g. Zaid Al-Hiyari',
-        bkGuestsLabel: 'Guests',
+        bkGuestsLabel: 'Number of Guests (1 – 50)',
         bkDateLabel: 'Date',
-        bkTimeLabel: 'Time',
-        bkOccLabel: 'Occasion (Optional)',
-        bkSubmit: 'Confirm Booking on WhatsApp 💬',
+        bkTimeLabel: 'Time (Custom)',
+        bkNoteLabel: 'Additional Note (Optional)',
+        bkNotePlaceholder: 'e.g. Terrace table or special celebration',
+        bkSubmit: 'Confirm via WhatsApp 💬',
         coalTitle: '🔥 Instant Charcoal Refill',
-        coalSub: 'Tap your table number for fresh natural coconut coals',
+        coalSub: 'Select your table number for fresh coconut coals',
         billTitle: '🧾 Request Table Bill',
         billSub: 'Select your table number & preferred payment method',
         tableLabel: 'Table Number (1 - 20)',
@@ -1021,170 +886,209 @@
         payCash: '💵 Cash',
         payVisa: '💳 Visa / Card',
         srvSend: 'Send Instant WhatsApp Alert 💬',
-        waiterTitle: 'Order Summary for Waiter',
-        waiterTotal: 'Total',
-        emptyCartToast: 'Your order is empty — add items first',
+        ordTitle: 'Your Order Summary 🛒',
+        ordTotalLbl: 'Estimated Total',
+        ordWaBtn: 'Send via WhatsApp 💬',
+        ordClearBtn: 'Clear',
+        emptyCart: 'Your order is empty — add items from the menu first',
         addedToast: 'Added to your order 🛒',
         zones: [
-          { kicker: '01 / 04 • KHALDA, AMMAN', title: 'The Stone Walkway Entrance', sub: 'Architectural limestone archways framed by lush greenery leading into Amman’s golden dusk' },
-          { kicker: '02 / 04 • THE GLASS-ROOF LOUNGE', title: 'The Glass-Roof Lounge', sub: 'Curved steel-and-glass skylight, woven rattan sofas with olive cushions, and warm globe pendants' },
-          { kicker: '03 / 04 • SHAMSA PLAZA & AL-FURN', title: 'Shamsa Plaza & Al-Furn', sub: 'Iconic black-and-white checkered patio, glass fire heaters, and our stone-hearth Al-Furn oven' },
+          { kicker: '01 / 04 • KHALDA, AMMAN', title: 'The Stone Archway Entrance', sub: 'Warm limestone archways framed by olive trees and lush greenery leading into Shamsa’s calm atmosphere' },
+          { kicker: '02 / 04 • THE GLASS-ROOF LOUNGE', title: 'The Glass-Roof Lounge', sub: 'Curved glass skylight, woven rattan lounge seating with sage cushions, and glowing globe lamps' },
+          { kicker: '03 / 04 • SHAMSA PLAZA & AL-FURN', title: 'Shamsa Plaza & Al-Furn', sub: 'Iconic black-and-white checkered patio, warm fire heaters, and our stone-hearth Al-Furn bakery' },
           { kicker: '04 / 04 • SUNSET PERGOLA TERRACE', title: 'Sunset Pergola & Hookah Terrace', sub: 'Golden-hour sunbeams drifting through wooden pergola beams and palms over Khalda’s skyline' }
         ],
         bookingZones: [
           { id: 'pergola', label: '🌅 Sunset Pergola' },
           { id: 'glass', label: '✨ Glass-Roof Lounge' },
           { id: 'plaza', label: '🔥 Shamsa Plaza' },
-          { id: 'vip', label: '👑 VIP Terrace' }
-        ],
-        bookingTimes: [
-          '6:00 PM (Sunset)',
-          '7:30 PM',
-          '8:30 PM (Evening)',
-          '10:30 PM (Late Night)',
-          '12:00 AM'
-        ],
-        occasions: [
-          { id: 'casual', label: 'Casual' },
-          { id: 'birthday', label: '🎂 Birthday' },
-          { id: 'match', label: '⚽ Match Night' }
-        ],
-        menuCats: [
-          { id: 'all', label: 'All' },
-          { id: 'drinks', label: 'Signature Drinks' },
-          { id: 'hookah', label: 'Hookah' },
-          { id: 'bakery', label: 'Al-Furn Bakery' },
-          { id: 'desserts', label: 'Desserts' }
+          { id: 'vip', label: '👑 Private Lounge' }
         ]
       }
     };
 
     /* ============================================================
-       2. CURATED PHOTOREALISTIC MENU & 8 INTERACTIVE HOTSPOTS
+       2. COMPLETE SHAMSA MENU DATA (ALL CATEGORIES & EXACT PRICES)
        ============================================================ */
-    const MENU_ITEMS = [
-      {
-        id: 'sunset-mojito',
-        cat: 'drinks',
-        price: 4.50,
-        img: 'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=900&q=85',
-        fallback: 'linear-gradient(135deg, #b45309, #451a03)',
-        ar: { name: 'موهيتو الغروب', meta: '140 سعرة • تحضير 3 دقائق', badge: 'توقيع شمسة', desc: 'مزيج البرتقال الأحمر والباشن فروت مع النعنع الطازج والليمون والثلج المجروش.' },
-        en: { name: 'Signature Sunset Mojito', meta: '140 kcal • 3 min prep', badge: 'Shamsa Signature', desc: 'Blood orange and passion fruit muddled with fresh garden mint, lime, and crushed ice.' }
-      },
-      {
-        id: 'spanish-latte',
-        cat: 'drinks',
-        price: 4.25,
-        img: 'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=900&q=85',
-        fallback: 'linear-gradient(135deg, #78350f, #291509)',
-        ar: { name: 'آيس سبانيش لاتيه', meta: '210 سعرة • بن مختص', badge: 'الأكثر طلباً', desc: 'طبقات مخملية من الحليب المكثف المحلى والحليب البارد تعلوها دبل إسبريسو مختص.' },
-        en: { name: 'Iced Spanish Latte', meta: '210 kcal • Specialty Roast', badge: 'Bestseller', desc: 'Velvety sweetened condensed milk layered with cold milk and double specialty espresso.' }
-      },
-      {
-        id: 'cold-brew',
-        cat: 'drinks',
-        price: 3.75,
-        img: 'https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?auto=format&fit=crop&w=900&q=85',
-        fallback: 'linear-gradient(135deg, #3b2314, #120c08)',
-        ar: { name: 'كولد برو شمسة', meta: '15 سعرة • تخمير 18 ساعة', badge: 'بارد ومنعش', desc: 'قهوة مختصة مخمرة على البارد لمدة 18 ساعة بإيحاءات الشوكولاتة الداكنة والكراميل.' },
-        en: { name: 'Shamsa Cold Brew', meta: '15 kcal • 18h Steeped', badge: 'Artisan Brew', desc: 'Slow-steeped for 18 hours for a silky body with dark chocolate and caramel notes.' }
-      },
-      {
-        id: 'truffle-flatbread',
-        cat: 'bakery',
-        price: 6.50,
-        img: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=900&q=85',
-        fallback: 'linear-gradient(135deg, #92400e, #1c1917)',
-        ar: { name: 'فطيرة الفرن بالكمأة والجبن', meta: 'مخبوزة بالفرن الحجري • 8 دقائق', badge: 'من الفرن', desc: 'عجينة الفرن المقرمشة مع جبن الموزاريلا والبارميزان وزيت الكمأة السوداء الفاخر.' },
-        en: { name: 'Al-Furn Truffle Flatbread', meta: 'Stone-Baked • 8 min', badge: 'From Al-Furn', desc: 'Crisp stone-hearth flatbread topped with melted artisanal cheeses and black truffle oil.' }
-      },
-      {
-        id: 'kunafa-cheesecake',
-        cat: 'desserts',
-        price: 5.25,
-        img: 'https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format&fit=crop&w=900&q=85',
-        fallback: 'linear-gradient(135deg, #854d0e, #1c1917)',
-        ar: { name: 'تشيز كيك كنافة بالفستق', meta: 'تحضير يومي طازج', badge: 'حصرياً في شمسة', desc: 'طبقة كنافة محمّصة مقرمشة مع تشيز كيك كريمي وكريمة الفستق الحلبي الفاخر.' },
-        en: { name: 'Pistachio Kunafa Cheesecake', meta: 'Freshly Crafted Daily', badge: 'House Exclusive', desc: 'Golden toasted kunafa crunch layered with creamy cheesecake and roasted pistachio cream.' }
-      },
-      {
-        id: 'shamsa-hookah',
-        cat: 'hookah',
-        price: 7.50,
-        img: 'https://images.unsplash.com/photo-1527661591475-527312dd65f5?auto=format&fit=crop&w=900&q=85',
-        fallback: 'linear-gradient(135deg, #7f1d1d, #0f1012)',
-        ar: { name: 'أرجيلة شمسة سبيشال', meta: 'فحم جوز هند 100% • تبديل فوري', badge: 'الأرجيلة الأولى', desc: 'توليفة شمسة السرية بأجود المعسلات مع بربيش طبي وخدمة تبديل فحم بضغطة زر.' },
-        en: { name: 'Shamsa Special Hookah', meta: '100% Coconut Coals • 1-Tap Refill', badge: 'Signature Shisha', desc: 'Our secret rooftop blend served with medical hose and instant 1-tap charcoal service.' }
-      },
-      {
-        id: 'berry-cooler',
-        cat: 'drinks',
-        price: 4.50,
-        img: 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=900&q=85',
-        fallback: 'linear-gradient(135deg, #581c87, #1e1b4b)',
-        ar: { name: 'توت ليلي روف توب', meta: '130 سعرة • فريش', badge: 'كوكتيل مسائي', desc: 'كوكتيل التوت البري الأسود والتوت الأحمر مع الليمون المنعش لأجواء السهرة.' },
-        en: { name: 'Midnight Berry Cooler', meta: '130 kcal • Fresh Pressed', badge: 'Night Edition', desc: 'Wild blackberries and raspberries shaken with fresh lime for Khalda nights.' }
-      },
-      {
-        id: 'classic-hookah',
-        cat: 'hookah',
-        price: 6.00,
-        img: 'https://images.unsplash.com/photo-1511690656952-34342bb7c2f2?auto=format&fit=crop&w=900&q=85',
-        fallback: 'linear-gradient(135deg, #3f3f46, #18181b)',
-        ar: { name: 'أرجيلة تفاحتين فاخر / عنب نعنع', meta: 'فحم جوز هند طبيعي', badge: 'كلاسيك', desc: 'نكهات أصلية بسحبة ناعمة ومتوازنة لقعدات الروف توب.' },
-        en: { name: 'Double Apple / Grape Mint Shisha', meta: 'Natural Coconut Coals', badge: 'Classic', desc: 'Authentic smooth draw crafted for long sunset conversations.' }
-      },
-      {
-        id: 'zaatar-halloumi',
-        cat: 'bakery',
-        price: 4.75,
-        img: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=900&q=85',
-        fallback: 'linear-gradient(135deg, #713f12, #292524)',
-        ar: { name: 'منقوشة الفرن زعتر وحلوم مشوي', meta: 'من فرن شمسة • ساخنة', badge: 'الأكثر طلباً', desc: 'زعتر بلدي أردني وزيت زيتون بكر مع شرائح جبنة الحلوم المشوية بالفرن.' },
-        en: { name: 'Al-Furn Zaatar & Grilled Halloumi', meta: 'Stone-Baked • Served Hot', badge: 'Local Favorite', desc: 'Jordanian wild zaatar, extra-virgin olive oil, and golden halloumi baked fresh.' }
-      },
-      {
-        id: 'san-sebastian',
-        cat: 'desserts',
-        price: 5.50,
-        img: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=900&q=85',
-        fallback: 'linear-gradient(135deg, #451a03, #78350f)',
-        ar: { name: 'سان سيباستيان بالشوكولاتة البلجيكية', meta: 'تُقدم ساخنة', badge: 'فاخر', desc: 'تشيز كيك مخبوز بقلب كريمي يذوب مع صوص الشوكولاتة البلجيكية الدافئة.' },
-        en: { name: 'San Sebastian Belgian Chocolate', meta: 'Served Warm', badge: 'Indulgent', desc: 'Caramelized Basque cheesecake drizzled tableside with warm Belgian chocolate.' }
-      }
+    const MENU_CATEGORIES = [
+      { id: 'all', ar: 'الكل', en: 'All' },
+      { id: 'tablieh', ar: 'طبلية إفطار', en: 'Breakfast Tablieh' },
+      { id: 'breakfast', ar: 'فطور وبيض وشوربات', en: 'Breakfast, Eggs & Soups' },
+      { id: 'bakery', ar: 'المناقيش ومعجنات شمسة', en: 'Manakeesh & Bakery' },
+      { id: 'salads', ar: 'السلطات', en: 'Salads' },
+      { id: 'cold', ar: 'مقبلات باردة', en: 'Cold Mezze' },
+      { id: 'hot', ar: 'مقبلات ساخنة وفتات', en: 'Hot Mezze & Fatteh' },
+      { id: 'sandwiches', ar: 'سندويشات', en: 'Sandwiches' },
+      { id: 'mains', ar: 'الأطباق الرئيسية', en: 'Main Courses' },
+      { id: 'drinks', ar: 'العصائر والمشروبات', en: 'Juices & Drinks' },
+      { id: 'hookah', ar: 'الأراجيل', en: 'Hookah' },
+      { id: 'desserts', ar: 'الحلويات', en: 'Desserts' }
     ];
 
-    // 8 Interactive Hotspots (2 per Zone)
-    const HOTSPOTS = [
-      // Zone 0: Stone Walkway Entrance
-      { zone: 0, type: 'menu', itemId: 'sunset-mojito', x: 26, y: 63 },
-      {
-        zone: 0, type: 'booking', bookingZone: 'glass', x: 74, y: 55,
-        img: 'https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=900&q=85',
-        fallback: 'linear-gradient(135deg, #5b3b1e, #1a1511)',
-        ar: { name: 'طاولة الاستقبال VIP', meta: '4 – 8 أشخاص • أولوية دخول', badge: 'حجز فوري', priceText: 'حجز مجاني', desc: 'ابدأ أمسيتك بطاولة محجوزة مسبقاً عند مدخل شمسة مع استقبال خاص وخدمة سريعة.' },
-        en: { name: 'VIP Entrance Table', meta: '4 – 8 Guests • Priority Seating', badge: 'Instant Booking', priceText: 'Complimentary', desc: 'Begin your evening with priority seating and curated hospitality right at Shamsa’s entrance.' }
-      },
-      // Zone 1: Glass-Roof Lounge
-      { zone: 1, type: 'menu', itemId: 'spanish-latte', x: 27, y: 58 },
-      { zone: 1, type: 'menu', itemId: 'cold-brew', x: 73, y: 64 },
-      // Zone 2: Shamsa Plaza & Al-Furn
-      { zone: 2, type: 'menu', itemId: 'truffle-flatbread', x: 26, y: 62 },
-      { zone: 2, type: 'menu', itemId: 'kunafa-cheesecake', x: 74, y: 56 },
-      // Zone 3: Sunset Pergola & Hookah Terrace
-      { zone: 3, type: 'menu', itemId: 'shamsa-hookah', x: 27, y: 62 },
-      {
-        zone: 3, type: 'booking', bookingZone: 'vip', x: 73, y: 56,
-        img: 'https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=900&q=85',
-        fallback: 'linear-gradient(135deg, #8a511e, #241810)',
-        ar: { name: 'قعدة VIP عالغروب', meta: 'إطلالة خلدا • شاشات 4K وسهرة عود', badge: 'الأكثر طلباً', priceText: 'حجز مجاني', desc: 'أفضل زاوية في الروف توب تحت البرجولا الخشبية مع إطلالة مباشرة على غروب عمّان.' },
-        en: { name: 'Sunset VIP Lounge Table', meta: 'Khalda View • 4K Matches & Oud', badge: 'Prime Spot', priceText: 'Complimentary', desc: 'Our most coveted wooden-pergola lounge overlooking Amman’s golden sunset.' }
-      }
+    const SHAMSA_MENU = [
+      // 1. طبلية إفطار
+      { id: 'tab-2', cat: 'tablieh', price: 13.65, ar: 'طبلية فطور لشخصين', en: 'Breakfast Tablieh for 2', descAr: 'حمص، حمص فول أخضر، كشكة، سلطة زيتون أخضر، دبس وطحينة، صحن خضار، جبنة عكاوي، زعتر وزيت، لبنة، قلاية بندورة، مخلل فاصوليا، شنكليش، فلافل، كرات زعتر بالجبنة، أومليت، منقوشة، شاي، خبز باغيت', descEn: 'Hummus, green fava beans with hummus, kishk, green olive salad, date molasses & tahini, vegetable platter, akkawi cheese, zaatar & olive oil, labneh, galayet bandora, pickled green beans, shanklish, falafel, cheese & zaatar balls, omelette, manqoushet zaatar or cheese, tea, baguette bread' },
+      { id: 'tab-4', cat: 'tablieh', price: 24.70, ar: 'طبلية فطور لأربع أشخاص', en: 'Breakfast Tablieh for 4', descAr: 'منقوشة جبنة وزعتر، أومليت، حمص، لبنة، فول، فلافل، زيت زيتون وزعتر، شكشوكة، مربى، جبنة حلوم، مياه، شاي لأربع أشخاص، صحن خضار مشكل، ٢ أرجيلة', descEn: 'Cheese & zaatar mankousheh, omelette, hummus, labaneh, foul, falafel, olive oil & zaatar, shakshuka, jam, halloumi cheese, water, tea for four, mixed vegetable plate, 2 hookahs' },
+
+      // 2. فطور وبيض وشوربات
+      { id: 'bf-1', cat: 'breakfast', price: 1.95, ar: 'حمص', en: 'Hummus' },
+      { id: 'bf-2', cat: 'breakfast', price: 1.70, ar: 'فول', en: 'Foul' },
+      { id: 'bf-3', cat: 'breakfast', price: 3.40, ar: 'قدسية', en: 'Qudsieh' },
+      { id: 'bf-4', cat: 'breakfast', price: 2.55, ar: 'مسبحة', en: 'Musabaha' },
+      { id: 'bf-5', cat: 'breakfast', price: 1.30, ar: 'فلافل', en: 'Falafel' },
+      { id: 'bf-6', cat: 'breakfast', price: 1.65, ar: 'فلافل محشي', en: 'Stuffed Falafel' },
+      { id: 'bf-7', cat: 'breakfast', price: 2.85, ar: 'حمص بيستو', en: 'Pesto Hummus' },
+      { id: 'bf-8', cat: 'breakfast', price: 2.60, ar: 'لبنة جرشية', en: 'Labaneh Jarashieh' },
+      { id: 'bf-9', cat: 'breakfast', price: 3.00, ar: 'لبنة شمسة', en: 'Shamsa Labaneh' },
+      { id: 'bf-10', cat: 'breakfast', price: 3.30, ar: 'شكشوكة', en: 'Shakshuka' },
+      { id: 'bf-11', cat: 'breakfast', price: 2.25, ar: 'بيض بلدي مسلوق', en: "Farmer's Boiled Eggs" },
+      { id: 'bf-12', cat: 'breakfast', price: 3.50, ar: 'طبق حمص وفلافل', en: 'Hummus & Falafel Platter' },
+      { id: 'bf-13', cat: 'breakfast', price: 5.50, ar: 'جبنة نابلسية مقلية', en: 'Fried Nabulsi Cheese' },
+      { id: 'bf-14', cat: 'breakfast', price: 2.75, ar: 'قرشلة وشاي', en: 'Qershaleh with Tea' },
+      { id: 'egg-1', cat: 'breakfast', price: 3.95, ar: 'بيض وسجق', en: 'Fried Eggs & Sausage' },
+      { id: 'egg-2', cat: 'breakfast', price: 3.55, ar: 'عجة مع جبنة', en: 'Cheese Omelette' },
+      { id: 'egg-3', cat: 'breakfast', price: 3.55, ar: 'عجة مع حلوم', en: 'Halloumi Omelette' },
+      { id: 'egg-4', cat: 'breakfast', price: 3.25, ar: 'عجة مع خضار', en: 'Vegetables Omelette' },
+      { id: 'egg-5', cat: 'breakfast', price: 3.25, ar: 'عجة بقدونس وبصل', en: 'Parsley and Onions Omelette' },
+      { id: 'egg-6', cat: 'breakfast', price: 0.90, ar: 'بيضة مسلوقة', en: 'Boiled Egg' },
+      { id: 'soup-1', cat: 'breakfast', price: 2.70, ar: 'شوربة عدس', en: 'Lentil Soup' },
+      { id: 'soup-2', cat: 'breakfast', price: 3.55, ar: 'شوربة الرشوف', en: 'Rashoof Soup', descAr: 'جميد بلدي، حمص حب، عدس، رز، سمن بلدي يقدم مع خبز الزعتر البلدي', descEn: 'Baladi jameed, chickpeas, lentils, rice, local ghee, local thyme bread' },
+      { id: 'soup-3', cat: 'breakfast', price: 4.75, ar: 'شوربة حريرة', en: 'Harira', descAr: 'شوربة حريرة مغربية باللحم والبندورة والبقوليات تقدم مع التمر والليمون', descEn: 'Moroccan harira soup, tomato, meat, mixed beans served with dates & lemon' },
+
+      // 3. المناقيش ومعجنات شمسة
+      { id: 'mnq-1', cat: 'bakery', price: 3.99, ar: 'جبنة نابلسية مع الزعتر', en: 'Nabulsi Cheese & Zaatar' },
+      { id: 'mnq-2', cat: 'bakery', price: 3.00, ar: 'زعتر', en: 'Zaatar' },
+      { id: 'mnq-3', cat: 'bakery', price: 4.50, ar: 'بسطرمة مع القشقوان', en: 'Basterma & Kashkaval' },
+      { id: 'mnq-4', cat: 'bakery', price: 4.50, ar: 'سجق بالبيض', en: 'Sausage & Eggs' },
+      { id: 'mnq-5', cat: 'bakery', price: 4.40, ar: 'أجبان مشكلة', en: 'Mix Cheese' },
+      { id: 'mnq-6', cat: 'bakery', price: 4.25, ar: 'تيركي مع القشقوان', en: 'Turkey & Kashkaval' },
+      { id: 'mnq-7', cat: 'bakery', price: 4.20, ar: 'لبنة مع الجرجير', en: 'Labaneh & Rocca' },
+      { id: 'mnq-8', cat: 'bakery', price: 4.25, ar: 'نوتيلا مع الموز', en: 'Nutella & Banana' },
+      { id: 'mnq-9', cat: 'bakery', price: 4.60, ar: 'طحينية بالعسل والفستق الحلبي', en: 'Tahini Honey Pistachio' },
+      { id: 'bak-1', cat: 'bakery', price: 4.50, ar: 'صفيحة يافاوية', en: 'Safeeha Yafa' },
+      { id: 'bak-2', cat: 'bakery', price: 3.55, ar: 'مطبق زعتر بلدي', en: "Mutabbaq Za'atar" },
+      { id: 'bak-3', cat: 'bakery', price: 3.55, ar: 'فطيرة فلافل', en: 'Falafel Pie' },
+      { id: 'bak-4', cat: 'bakery', price: 4.00, ar: 'كعكة عصرونية اللبنانية مع مكس أجبان', en: 'Lebanese Kaak Bread (Mixed Cheese)' },
+      { id: 'bak-5', cat: 'bakery', price: 3.95, ar: 'كعكة عصرونية اللبنانية مع القشطة والعسل', en: 'Lebanese Kaak Bread (Honey & Qeshta)' },
+      { id: 'bak-6', cat: 'bakery', price: 4.25, ar: 'صفيحة', en: 'Sfiha' },
+      { id: 'bak-7', cat: 'bakery', price: 4.25, ar: 'فطيرة محمرة', en: 'Muhammara Pie' },
+      { id: 'bak-8', cat: 'bakery', price: 3.95, ar: 'فطاير سبانخ', en: 'Spinach Fatayer' },
+      { id: 'bak-9', cat: 'bakery', price: 3.00, ar: 'كعكة بيض عصرونية', en: 'Eggs Asroneyeh', descAr: 'كعكة عصرونية طازجة محشوة بالبيض المسلوق وشرائح البندورة والزعتر البلدي', descEn: 'Fresh asroneyeh bread stuffed with boiled eggs, tomato slices and thyme' },
+
+      // 4. السلطات
+      { id: 'sal-1', cat: 'salads', price: 5.55, ar: 'سلطة القيصر', en: 'Caesar Salad', descAr: 'سلطة خضراء من الخس والبانكو، انشوفيز', descEn: 'Green salad, romaine lettuce, panko, anchovies' },
+      { id: 'sal-2', cat: 'salads', price: 4.25, ar: 'سلطة الفتوش', en: 'Fattoush Salad', descAr: 'سلطة خضراء مخلوطة بالليمون والبصل والسماق السلطي ومزينة بالخبز المقلي', descEn: 'Mixed salad, fried bread, sumac' },
+      { id: 'sal-3', cat: 'salads', price: 4.50, ar: 'تبولة', en: 'Tabbouleh Salad', descAr: 'بقدونس مع البندورة والليمون والبصل وكينوا بزيت الزيتون', descEn: 'Parsley, lemon, fresh mint, tomatoes, onions & quinoa' },
+      { id: 'sal-4', cat: 'salads', price: 4.80, ar: 'سلطة التمر', en: 'Dates Salad', descAr: 'سلطة أوراق مشكلة مع التمر وتين مجفف ومشمش مجفف والجوز', descEn: 'Mixed leaves salad, dates & dried figs & dried apricot & walnut' },
+      { id: 'sal-5', cat: 'salads', price: 5.55, ar: 'سلطة مقرمشة', en: 'Crispy Salad', descAr: 'مجموعة من الخضار المبروشة والمقلية', descEn: 'Mix fried vegetables, special dressing' },
+      { id: 'sal-6', cat: 'salads', price: 4.95, ar: 'سلطة الحمضيات', en: 'Citrus Salad', descAr: 'سلطة الخضار الموسمية', descEn: 'Mix seasonal vegetables' },
+      { id: 'sal-7', cat: 'salads', price: 4.80, ar: 'سلطة الأفوكادو', en: 'Avocado Salad', descAr: 'أفوكادو، بندورة كرزية، خيار، بصل أحمر', descEn: 'Avocado, cherry tomatoes, cucumber, red grape, vinegar, red onion, coriander' },
+      { id: 'sal-8', cat: 'salads', price: 4.55, ar: 'سلطة الجرجير', en: 'Rocca Salad', descAr: 'جرجير، بندورة كرزية، جبنة حلوم بالسماق السلطي', descEn: 'Fresh rocca, cherry tomatoes, Halloumi Cheese, sumac' },
+      { id: 'sal-9', cat: 'salads', price: 5.55, ar: 'سلطة الشمندر', en: 'Beetroot Salad', descAr: 'شمندر، بصل أحمر، جبنة فيتا، خيار، شومر، خس', descEn: 'Beetroot, cucumber, feta cheese, red onion, fennel, lettuce' },
+      { id: 'sal-10', cat: 'salads', price: 4.00, ar: 'سلطة برغل', en: 'Bulgur Salad', descAr: 'برغل مطبوخ بزيت الزيتون والبندورة مع الجرجير ودبس الرمان', descEn: 'Bulgur with tomatoes, rocca and pomegranate molasses' },
+
+      // 5. مقبلات باردة
+      { id: 'cm-1', cat: 'cold', price: 3.25, ar: 'بابا غنوج', en: 'Baba Ghanoug' },
+      { id: 'cm-2', cat: 'cold', price: 3.55, ar: 'متبل شمندر', en: 'Beetroot Mutabbal' },
+      { id: 'cm-3', cat: 'cold', price: 3.00, ar: 'متبل', en: 'Mutabbal' },
+      { id: 'cm-4', cat: 'cold', price: 2.50, ar: 'طبق الخضار المشكلة', en: 'Mix Vegetables Platter' },
+      { id: 'cm-5', cat: 'cold', price: 2.25, ar: 'طبق زيتون مشكل', en: 'Mix Olives Platter' },
+      { id: 'cm-6', cat: 'cold', price: 3.00, ar: 'محمرة', en: 'Mouhamara' },
+      { id: 'cm-7', cat: 'cold', price: 5.25, ar: 'شنكليش', en: 'Shankleesh' },
+      { id: 'cm-8', cat: 'cold', price: 6.55, ar: 'طبق أجبان عربي', en: 'Arabic Cheese Board', descAr: 'حلوم، جبنة مقلية، جبنة نابلسية، جبنة كرات، جبنة مجدلة، عسل، مربى', descEn: 'Arabic selection of cheeses, honey, jam' },
+
+      // 6. مقبلات ساخنة وفتات
+      { id: 'hm-1', cat: 'hot', price: 4.15, ar: 'حلوم مشوي', en: 'Grilled Halloumi' },
+      { id: 'hm-2', cat: 'hot', price: 4.00, ar: 'عرايس', en: 'Arayes' },
+      { id: 'hm-3', cat: 'hot', price: 4.40, ar: 'سجق بلدي', en: 'Sujuk' },
+      { id: 'hm-4', cat: 'hot', price: 4.50, ar: 'قلاية بندورة / باللحمة', en: 'Qalayet Bandora / Meat' },
+      { id: 'hm-5', cat: 'hot', price: 5.55, ar: 'طبق مزة شمسة', en: 'Shamsa Mezza Platter' },
+      { id: 'hm-6', cat: 'hot', price: 3.80, ar: 'كبة مقلية', en: 'Fried Kubbeh' },
+      { id: 'hm-7', cat: 'hot', price: 2.75, ar: 'سمبوسك جبنة', en: 'Cheese Sambousek' },
+      { id: 'hm-8', cat: 'hot', price: 4.25, ar: 'زهرة مقلية مع صوص حار', en: 'Spicy Cauliflower Popcorn' },
+      { id: 'hm-9', cat: 'hot', price: 4.25, ar: 'كرات الفريكة', en: 'Freekeh Balls' },
+      { id: 'hm-10', cat: 'hot', price: 4.65, ar: 'كبدة الدجاج', en: 'Chicken Liver' },
+      { id: 'hm-11', cat: 'hot', price: 3.95, ar: 'لفائف المسخن', en: 'Musakhan Rolls' },
+      { id: 'hm-12', cat: 'hot', price: 3.00, ar: 'البطاطا الحارة', en: 'Chili Potato' },
+      { id: 'hm-13', cat: 'hot', price: 4.50, ar: 'حمص باللحمة', en: 'Hummus with Meat' },
+      { id: 'hm-14', cat: 'hot', price: 2.85, ar: 'مفركة بطاطا', en: 'Mufaaraka' },
+      { id: 'hm-15', cat: 'hot', price: 3.00, ar: 'البطاطا الحلوة المقلية', en: 'Fried Sweet Potato' },
+      { id: 'hm-16', cat: 'hot', price: 2.00, ar: 'بطاطا مقلية', en: 'French Fries' },
+      { id: 'hm-17', cat: 'hot', price: 3.30, ar: 'شرائح البطاطا المقلية', en: 'Fried Wedges' },
+      { id: 'fat-1', cat: 'hot', price: 5.00, ar: 'فتة حمص', en: 'Hummus Fatteh' },
+      { id: 'fat-2', cat: 'hot', price: 5.75, ar: 'فتة باذنجان', en: 'Eggplant Fatteh' },
+      { id: 'fat-3', cat: 'hot', price: 5.75, ar: 'فتة شيش برك', en: 'Shish Barak Fatteh' },
+
+      // 7. سندويشات
+      { id: 'snd-1', cat: 'sandwiches', price: 4.80, ar: 'كبدة', en: 'Chicken Liver', descAr: 'كبدة، بصل، ثوم، فلفل حلو ألوان، جرجير، صوص شمسة', descEn: 'Onions, garlic, bell pepper, arugula, shamsa sauce' },
+      { id: 'snd-2', cat: 'sandwiches', price: 5.30, ar: 'طاووق', en: 'Chicken Tawooq', descAr: 'شيش طاووق، بطاطا، مثومة، طحينية', descEn: 'Tawook, potatoes, garlic sauce, tahini' },
+      { id: 'snd-3', cat: 'sandwiches', price: 5.70, ar: 'شاورما لحمة', en: 'Beef Shawarma', descAr: 'شاورما لحم، بصل، طحينة، بندورة', descEn: 'Onions, tahini, tomatoes' },
+      { id: 'snd-4', cat: 'sandwiches', price: 4.65, ar: 'الحلوم المشوي', en: 'Grilled Halloumi', descAr: 'شرائح الحلوم المقرمش مع الريحان والبندورة في خبز البانيني الطازج', descEn: 'Crispy halloumi cheese, basil paste, tomatoes, panini bread' },
+      { id: 'snd-5', cat: 'sandwiches', price: 6.70, ar: 'ستيك', en: 'Steak', descAr: 'شرائح الستيك مع البصل والفطر المغطى بالجبنة', descEn: 'Juicy strips of steak, caramelized onions, mushrooms & melted cheese' },
+      { id: 'snd-6', cat: 'sandwiches', price: 5.50, ar: 'كباب', en: 'Kabab', descAr: 'وصفة الكباب المميزة مع البندورة والبصل وصوص الطحينية', descEn: 'Special kabab recipe, tomatoes, onions & tahini sauce' },
+      { id: 'snd-7', cat: 'sandwiches', price: 6.00, ar: 'شمسة برجر', en: 'Shamsa Burger', descAr: '١٥٠ جرام من اللحمة، صوص الخاص بشمسة، جبنة', descEn: '150g beef patty, shamsa sauce, cheese' },
+      { id: 'snd-8', cat: 'sandwiches', price: 5.55, ar: 'الدجاج المقرمش', en: 'Crispy Chicken', descAr: 'صدر الدجاج المقرمش، خس، مخلل، سلطة الكولسلو', descEn: 'Chicken breast, lettuce, pickles, coleslaw' },
+      { id: 'snd-9', cat: 'sandwiches', price: 4.80, ar: 'شاورما الدجاج', en: 'Chicken Shawarma' },
+      { id: 'snd-10', cat: 'sandwiches', price: 4.80, ar: 'توست تيركي مدخن وجبنة', en: 'Smoked Turkey & Cheese Toast' },
+
+      // 8. الأطباق الرئيسية
+      { id: 'mn-1', cat: 'mains', price: 8.99, ar: 'كفتة بالبندورة', en: 'Tomato Kufta', descAr: 'لحمة مفرومة، بندورة، بصل، بهارات على طريقتنا', descEn: 'Minced meat, tomato, onions & special spices' },
+      { id: 'mn-2', cat: 'mains', price: 9.60, ar: 'كفتة بالطحينية', en: 'Tahini Kufta', descAr: 'لحمة مفرومة، طحينية، بطاطا مع البهارات الخاصة على طريقتنا', descEn: 'Minced meat, tahini, potato & special spices' },
+      { id: 'mn-3', cat: 'mains', price: 13.30, ar: 'السلمون المشوي', en: 'Grilled Salmon', descAr: 'سمكة السلمون متبلة بالوصفة الخاصة مع البصل والبندورة والليمون والأعشاب', descEn: 'Marinated with onions, tomato, lemon, herbs' },
+      { id: 'mn-4', cat: 'mains', price: 17.95, ar: 'مشاوي شمسة', en: 'Shamsa Mixed Grill', descAr: '٥ أسياخ من الكباب وشيش الطاووق وشقف اللحمة تقدم مع الخضار المشوية', descEn: '5 skewers of kabab, tawooq, beef cutlets, grilled vegetables' },
+      { id: 'mn-5', cat: 'mains', price: 8.00, ar: 'دجاج بالأعشاب', en: 'Chicken Herbs', descAr: 'دجاج مشوي متبل بالزعتر والليمون يقدم مع خضار سوتيه', descEn: 'Grilled chicken breast marinated with lemon & thyme, served with sautéed vegetables' },
+      { id: 'mn-6', cat: 'mains', price: 18.50, ar: 'فخارة موزات اللحم', en: 'Lamb Shank Fokhara', descAr: 'موزات الخروف مطبوخة بعناية وبطء مع الخضار المشوية بالفخارة', descEn: 'Slow cooked lamb with grilled vegetables' },
+      { id: 'mn-7', cat: 'mains', price: 13.90, ar: 'منسف', en: 'Mansaf' },
+      { id: 'mn-8', cat: 'mains', price: 8.95, ar: 'منزلة باذنجان باللحمة', en: 'Eggplant Mnazzaleh With Beef' },
+      { id: 'mn-9', cat: 'mains', price: 7.90, ar: 'صينية دجاج وبطاطا', en: 'Roasted Chicken & Potatoes', descAr: 'جاجة المزرعة مشوية، بطاطا، صلصة الليمون الخاصة', descEn: 'Grilled baby chicken, potatoes, special lemon sauce' },
+      { id: 'mn-10', cat: 'mains', price: 8.80, ar: 'كباب أورفلي', en: 'Urfa Kabab', descAr: 'كباب مشوي مع الباذنجان ويقدم مع الخضار المشوية', descEn: 'Grilled kebab with eggplant, served with grilled vegetables' },
+      { id: 'mn-11', cat: 'mains', price: 6.40, ar: 'كبة باللبن', en: 'Kubbeh & Yogurt', descAr: 'كبة لبنية تقدم مع الأرز بالشعيرية', descEn: 'Fried kubbeh, yogurt sauce, vermicelli rice' },
+      { id: 'mn-12', cat: 'mains', price: 8.80, ar: 'كباب خشخاش', en: 'Kushkash Kabab', descAr: 'كباب حلبي مشوي مع المكسرات بصلصة الخشخاش البندورة والبصل', descEn: 'Grilled halabi kabab, nuts, khushkhas sauce - tomatoes and onions' },
+      { id: 'mn-13', cat: 'mains', price: 5.90, ar: 'وجبة أطفال شمسة', en: 'Shamsa Kids Meal', descAr: 'برجر جبنة، بطاطا مقلية، ناجتس دجاج', descEn: 'Cheese burger, french fries, chicken nuggets' },
+      { id: 'mn-14', cat: 'mains', price: 6.50, ar: 'زهرة بالطحينية', en: 'Cauliflower with Tahini Sauce', descAr: 'فخارة زهرة بالطحينية مشوية بالفرن', descEn: 'Oven baked cauliflower, tahini sauce' },
+      { id: 'mn-15', cat: 'mains', price: 6.40, ar: 'شيش برك', en: 'Shish Barak', descAr: 'شيش برك مطبوخ باللبن والثوم والنعنع يقدم مع أرز بالشعيرية', descEn: 'Shish barak cooked with yogurt, garlic, mint served with rice' },
+      { id: 'mn-16', cat: 'mains', price: 8.50, ar: 'صاجية لحمة', en: 'Sajieh Meat', descAr: 'لية خاروف بالبصل والفلفل الحلو مطبوخة بالصاجية على طريقة شمسة', descEn: 'Lamb fat shish cooked with onion & bell pepper' },
+
+      // 9. العصائر والمشروبات
+      { id: 'drk-1', cat: 'drinks', price: 3.75, ar: 'موهيتو شمسة سبيشال', en: 'Shamsa Special Mojito', descAr: 'موهيتو منعش بالنعنع الطازج والليمون والباشن فروت', descEn: 'Refreshing mint, lime & passion fruit mojito' },
+      { id: 'drk-2', cat: 'drinks', price: 3.25, ar: 'عصير برتقال / رمان طازج', en: 'Fresh Orange / Pomegranate Juice', descAr: 'عصير طبيعي معصور طازجاً عند الطلب', descEn: '100% freshly squeezed seasonal fruit juice' },
+      { id: 'drk-3', cat: 'drinks', price: 3.00, ar: 'ليمون ونعنع مثلج', en: 'Iced Mint Lemonade' },
+      { id: 'drk-4', cat: 'drinks', price: 3.50, ar: 'آيس سبانيش لاتيه', en: 'Iced Spanish Latte' },
+      { id: 'drk-5', cat: 'drinks', price: 3.50, ar: 'شاي بالنعنع إبريق', en: 'Mint Tea Pot' },
+
+      // 10. الأراجيل
+      { id: 'hk-1', cat: 'hookah', price: 7.00, ar: 'أرجيلة شمسة سبيشال', en: 'Shamsa Special Hookah', descAr: 'خلطة شمسة الخاصة مع فحم جوز هند طبيعي وتبديل فحم فوري', descEn: 'Signature Shamsa blend with 100% coconut coals & instant refill' },
+      { id: 'hk-2', cat: 'hookah', price: 5.50, ar: 'أرجيلة تفاحتين فاخر', en: 'Double Apple Hookah' },
+      { id: 'hk-3', cat: 'hookah', price: 5.50, ar: 'أرجيلة عنب ونعنع', en: 'Grape & Mint Hookah' },
+      { id: 'hk-4', cat: 'hookah', price: 5.50, ar: 'أرجيلة ليمون ونعنع', en: 'Lemon & Mint Hookah' },
+
+      // 11. الحلويات
+      { id: 'des-1', cat: 'desserts', price: 4.55, ar: 'كعكة التمر مع صوص الكراميل المملح', en: 'Date Cake Pudding with Salted Caramel' },
+      { id: 'des-2', cat: 'desserts', price: 4.55, ar: 'قشطة مع عسل', en: 'Qishta with Honey' },
+      { id: 'des-3', cat: 'desserts', price: 5.00, ar: 'كوكي ساخنة مع آيس كريم فانيليا', en: 'Cookie in a pan with Vanilla Ice Cream' },
+      { id: 'des-4', cat: 'desserts', price: 5.00, ar: 'أم علي', en: 'Um Ali' }
     ];
 
     /* ============================================================
-       3. 60FPS LERP SPATIAL WALKTHROUGH ENGINE (SCROLL + TOUCH ANYWHERE)
+       3. 8 HOTSPOTS (2 PER ZONE)
+       ============================================================ */
+    const HOTSPOTS = [
+      // Zone 1: Tablieh for 2 & Tablieh for 4
+      { zone: 0, itemId: 'tab-2', x: 26, y: 63, img: 'https://images.unsplash.com/photo-1541518763669-27fef04b14ea?auto=format&fit=crop&w=600&q=80', badgeAr: 'طبلية شمسة', badgeEn: 'Tablieh' },
+      { zone: 0, itemId: 'tab-4', x: 74, y: 56, img: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=600&q=80', badgeAr: 'لـ ٤ أشخاص', badgeEn: 'For 4 Guests' },
+      // Zone 2: Juices & Drinks
+      { zone: 1, itemId: 'drk-1', x: 26, y: 58, img: 'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=600&q=80', badgeAr: 'موهيتو شمسة', badgeEn: 'Signature Drink' },
+      { zone: 1, itemId: 'drk-2', x: 74, y: 63, img: 'https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?auto=format&fit=crop&w=600&q=80', badgeAr: 'عصائر طازجة', badgeEn: 'Fresh Juice' },
+      // Zone 3: Desserts
+      { zone: 2, itemId: 'des-1', x: 26, y: 62, img: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=600&q=80', badgeAr: 'الحلويات', badgeEn: 'Dessert' },
+      { zone: 2, itemId: 'des-4', x: 74, y: 56, img: 'https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=600&q=80', badgeAr: 'ساخنة', badgeEn: 'Warm Dessert' },
+      // Zone 4: Hookah / Aragil
+      { zone: 3, itemId: 'hk-1', x: 26, y: 62, img: 'https://images.unsplash.com/photo-1527661591475-527312dd65f5?auto=format&fit=crop&w=600&q=80', badgeAr: 'أرجيلة شمسة', badgeEn: 'Special Hookah' },
+      { zone: 3, itemId: 'hk-2', x: 74, y: 56, img: 'https://images.unsplash.com/photo-1511690656952-34342bb7c2f2?auto=format&fit=crop&w=600&q=80', badgeAr: 'أراجيل', badgeEn: 'Hookah' }
+    ];
+
+    /* ============================================================
+       4. LIGHTWEIGHT 60FPS WALKTHROUGH ENGINE
        ============================================================ */
     const zoneEls = [
       document.getElementById('zone-0'),
@@ -1195,47 +1099,37 @@
 
     let targetProgress = 0.04;
     let currentProgress = 0.04;
-    let walkVelocity = 0;
     let activeZoneIdx = -1;
-    let hasWalked = false;
-
-    // Subtle Camera Pan Parallax (Mouse / Touch)
     let targetPanX = 0, targetPanY = 0;
     let currentPanX = 0, currentPanY = 0;
 
     function isAnyOverlayOpen() {
+      const inspectEl = document.getElementById('inspect-modal');
+      const menuEl = document.getElementById('menu-drawer');
+      const bkEl = document.getElementById('booking-modal');
+      const srvEl = document.getElementById('service-modal');
+      const ordEl = document.getElementById('order-modal');
       return (
-        document.getElementById('inspect-modal').classList.contains('open') ||
-        !document.getElementById('menu-drawer').classList.contains('translate-x-full') ||
-        !document.getElementById('booking-modal').classList.contains('pointer-events-none') ||
-        !document.getElementById('service-modal').classList.contains('pointer-events-none') ||
-        !document.getElementById('waiter-modal').classList.contains('pointer-events-none')
+        (inspectEl && inspectEl.classList.contains('open')) ||
+        (menuEl && !menuEl.classList.contains('translate-x-full')) ||
+        (bkEl && !bkEl.classList.contains('pointer-events-none')) ||
+        (srvEl && !srvEl.classList.contains('pointer-events-none')) ||
+        (ordEl && !ordEl.classList.contains('pointer-events-none'))
       );
     }
 
-    function markWalked() {
-      if (hasWalked) return;
-      hasWalked = true;
-      const hint = document.getElementById('walk-hint');
-      hint.classList.add('opacity-0', 'translate-y-4');
-    }
-
-    // Mouse Wheel Walkthrough Anywhere
     window.addEventListener('wheel', (e) => {
       if (isAnyOverlayOpen()) return;
-      targetProgress = Math.max(0, Math.min(1, targetProgress + e.deltaY * 0.00042));
-      markWalked();
+      targetProgress = Math.max(0, Math.min(1, targetProgress + e.deltaY * 0.00048));
     }, { passive: true });
 
-    // Touch Swipe Walkthrough Anywhere (Preserves Hotspot Taps & Buttons)
     let touchActive = false;
     let lastTouchY = 0;
     let lastTouchX = 0;
-    const stageEl = document.getElementById('walkthrough-stage');
 
     window.addEventListener('touchstart', (e) => {
       if (isAnyOverlayOpen()) return;
-      if (e.target.closest('header, nav, aside, .hotspot-pin')) return;
+      if (e.target.closest('header, nav, aside, .hotspot-pin, #dessert-spotlight, #welcome-spotlight')) return;
       if (e.touches.length === 1) {
         touchActive = true;
         lastTouchY = e.touches[0].clientY;
@@ -1247,23 +1141,23 @@
       if (!touchActive || isAnyOverlayOpen() || e.touches.length !== 1) return;
       const dy = lastTouchY - e.touches[0].clientY;
       const dx = e.touches[0].clientX - lastTouchX;
-      if (Math.abs(dy) > 2) {
-        targetProgress = Math.max(0, Math.min(1, targetProgress + dy * 0.00145));
-        markWalked();
+      if (Math.abs(dy) > 1.5) {
+        targetProgress = Math.max(0, Math.min(1, targetProgress + dy * 0.0017));
       }
       targetPanX = Math.max(-1, Math.min(1, targetPanX + dx * 0.004));
       lastTouchY = e.touches[0].clientY;
       lastTouchX = e.touches[0].clientX;
     }, { passive: true });
 
-    window.addEventListener('touchend', () => { touchActive = false; });
+    window.addEventListener('touchend', () => { touchActive = false; }, { passive: true });
 
-    // Desktop Mouse Pan Parallax + Keyboard Arrows
-    window.addEventListener('mousemove', (e) => {
-      if (isAnyOverlayOpen()) return;
-      targetPanX = (e.clientX / window.innerWidth - 0.5) * 2;
-      targetPanY = (e.clientY / window.innerHeight - 0.5) * 2;
-    });
+    if (window.matchMedia('(pointer: fine)').matches) {
+      window.addEventListener('mousemove', (e) => {
+        if (isAnyOverlayOpen()) return;
+        targetPanX = (e.clientX / window.innerWidth - 0.5) * 2;
+        targetPanY = (e.clientY / window.innerHeight - 0.5) * 2;
+      }, { passive: true });
+    }
 
     window.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
@@ -1271,68 +1165,51 @@
         closeMenuDrawer();
         closeBookingModal();
         closeServiceModal();
-        closeWaiterModal();
+        closeOrderModal();
         return;
       }
       if (isAnyOverlayOpen()) return;
       if (e.key === 'ArrowDown' || e.key === 'w' || e.key === 'W') {
-        targetProgress = Math.min(1, targetProgress + 0.07);
-        markWalked();
+        targetProgress = Math.min(1, targetProgress + 0.08);
       } else if (e.key === 'ArrowUp' || e.key === 's' || e.key === 'S') {
-        targetProgress = Math.max(0, targetProgress - 0.07);
-        markWalked();
+        targetProgress = Math.max(0, Math.min(1, targetProgress - 0.08));
       }
     });
 
     function glideToZone(idx) {
-      const targets = [0.06, 0.36, 0.64, 0.92];
+      const targets = [0.05, 0.35, 0.65, 0.94];
       targetProgress = targets[idx];
-      markWalked();
     }
 
     /* ============================================================
-       4. RENDER PULSING GOLD HOTSPOTS & ZONE COPY
+       5. HOTSPOTS & ZONE UI UPDATES
        ============================================================ */
     const hotspotsLayer = document.getElementById('hotspots-layer');
 
-    function getHotspotDetails(hs) {
-      if (hs.type === 'menu') {
-        const item = MENU_ITEMS.find((m) => m.id === hs.itemId);
-        return {
-          ...item,
-          type: 'menu',
-          display: item[currentLang],
-          priceText: `${item.price.toFixed(2)} ${I18N[currentLang].currency}`
-        };
-      }
-      return {
-        ...hs,
-        display: hs[currentLang],
-        priceText: hs[currentLang].priceText
-      };
-    }
-
     function renderHotspots() {
+      const t = I18N[currentLang];
       hotspotsLayer.innerHTML = '';
-      HOTSPOTS.forEach((hs, idx) => {
-        const info = getHotspotDetails(hs);
+      HOTSPOTS.forEach((hs) => {
+        const item = SHAMSA_MENU.find((m) => m.id === hs.itemId);
+        if (!item) return;
+        const dishName = currentLang === 'ar' ? item.ar : item.en;
         const btn = document.createElement('button');
         btn.className = 'hotspot-pin';
         btn.dataset.zone = hs.zone;
         btn.style.left = `${hs.x}%`;
         btn.style.top = `${hs.y}%`;
         btn.innerHTML = `
-          <div class="hotspot-pulse-ring">
-            <img src="${info.img}" alt="${info.display.name}" class="w-full h-full object-cover" onerror="this.style.display='none'; this.parentElement.style.background='${info.fallback}';" />
+          <div class="hotspot-thumb">
+            <img src="${hs.img}" alt="${dishName}" class="w-full h-full object-cover" loading="lazy" decoding="async" onerror="this.style.display='none';" />
           </div>
-          <div class="${currentLang === 'ar' ? 'text-right' : 'text-left'} leading-tight">
-            <span class="block text-[11px] sm:text-xs font-extrabold text-cream whitespace-nowrap">${info.display.name}</span>
-            <span class="block text-[10px] font-bold text-goldLight">${info.priceText}</span>
+          <div class="${currentLang === 'ar' ? 'text-right' : 'text-left'} leading-tight min-w-0">
+            <span class="block text-[10px] sm:text-xs font-extrabold text-oliveInk truncate">${dishName}</span>
+            <span class="block text-[10px] font-black text-sageDark">${item.price.toFixed(2)} ${t.currency}</span>
           </div>
         `;
         btn.addEventListener('click', (e) => {
           e.stopPropagation();
-          openInspectModal(hs);
+          openInspectModal(hs, item);
         });
         hotspotsLayer.appendChild(btn);
       });
@@ -1341,8 +1218,7 @@
 
     function syncHotspotVisibility() {
       document.querySelectorAll('.hotspot-pin').forEach((pin) => {
-        const isCurrent = Number(pin.dataset.zone) === activeZoneIdx;
-        pin.classList.toggle('visible', isCurrent);
+        pin.classList.toggle('visible', Number(pin.dataset.zone) === activeZoneIdx);
       });
     }
 
@@ -1351,206 +1227,80 @@
       activeZoneIdx = idx;
 
       const zCopy = I18N[currentLang].zones[idx];
-      const copyWrap = document.getElementById('zone-hero-copy');
-      copyWrap.style.opacity = '0';
-      copyWrap.style.transform = 'translate(-50%, 10px)';
-
-      setTimeout(() => {
-        document.getElementById('zone-kicker').textContent = zCopy.kicker;
-        document.getElementById('zone-headline').textContent = zCopy.title;
-        document.getElementById('zone-subline').textContent = zCopy.sub;
-        copyWrap.style.opacity = '1';
-        copyWrap.style.transform = 'translate(-50%, 0px)';
-      }, 170);
+      document.getElementById('zone-kicker').textContent = zCopy.kicker;
+      document.getElementById('zone-headline').textContent = zCopy.title;
+      document.getElementById('zone-subline').textContent = zCopy.sub;
 
       document.querySelectorAll('.zone-rail-dot').forEach((d, i) => {
         d.classList.toggle('active', i === idx);
       });
 
+      document.querySelectorAll('[data-top-dot]').forEach((d, i) => {
+        d.className = i === idx
+          ? 'w-3.5 h-1 rounded-full bg-sage transition-all'
+          : 'w-1.5 h-1 rounded-full bg-sage/30 transition-all';
+      });
+
+      // Dessert spotlight shown on Zone 0; Welcome message stays visible on ALL 4 pages
+      const dessertPill = document.getElementById('dessert-spotlight');
+      if (dessertPill) dessertPill.classList.toggle('hidden', idx !== 0);
+
       syncHotspotVisibility();
     }
 
-    /* ============================================================
-       5. ATMOSPHERIC CANVAS: VOLUMETRIC GOD RAYS, DUST MOTES & EMBERS
-       ============================================================ */
-    const atmoCanvas = document.getElementById('atmosphere-canvas');
-    const atmoCtx = atmoCanvas.getContext('2d');
-    const dustMotes = [];
-    const embers = [];
+    function animate() {
+      requestAnimationFrame(animate);
+      if (isAnyOverlayOpen()) return;
 
-    function resizeAtmoCanvas() {
-      atmoCanvas.width = window.innerWidth;
-      atmoCanvas.height = window.innerHeight;
-    }
+      currentProgress += (targetProgress - currentProgress) * 0.085;
+      currentPanX += (targetPanX - currentPanX) * 0.06;
+      currentPanY += (targetPanY - currentPanY) * 0.06;
 
-    function initAtmosphere() {
-      resizeAtmoCanvas();
-      dustMotes.length = 0;
-      embers.length = 0;
-      for (let i = 0; i < 65; i++) {
-        dustMotes.push({
-          x: Math.random() * atmoCanvas.width,
-          y: Math.random() * atmoCanvas.height,
-          r: 0.8 + Math.random() * 2.2,
-          a: 0.14 + Math.random() * 0.42,
-          vx: (Math.random() - 0.5) * 0.22,
-          vy: -0.12 - Math.random() * 0.3
-        });
-      }
-      for (let i = 0; i < 28; i++) {
-        embers.push({
-          x: Math.random() * atmoCanvas.width,
-          y: atmoCanvas.height * (0.55 + Math.random() * 0.45),
-          r: 1.0 + Math.random() * 2.2,
-          a: 0.35 + Math.random() * 0.55,
-          vy: -0.45 - Math.random() * 0.85,
-          drift: Math.random() * Math.PI * 2
-        });
-      }
-    }
-
-    let frameTime = 0;
-    function drawAtmosphere(progress, velocity) {
-      frameTime += 0.016;
-      const w = atmoCanvas.width;
-      const h = atmoCanvas.height;
-      atmoCtx.clearRect(0, 0, w, h);
-
-      // 1. Volumetric Drifting Golden Sunbeams (God Rays — strongest in Zones 1 & 4)
-      const rayStrength = progress > 0.65 ? 0.20 : progress < 0.28 ? 0.14 : 0.08;
-      atmoCtx.save();
-      atmoCtx.globalCompositeOperation = 'screen';
-      for (let i = 0; i < 3; i++) {
-        const originX = w * (0.72 + Math.sin(frameTime * 0.25 + i) * 0.06);
-        const beamW = w * (0.18 + i * 0.07);
-        const grad = atmoCtx.createLinearGradient(originX, 0, originX - w * 0.45, h * 0.95);
-        grad.addColorStop(0, `rgba(244, 210, 146, ${rayStrength})`);
-        grad.addColorStop(0.55, `rgba(223, 173, 95, ${rayStrength * 0.45})`);
-        grad.addColorStop(1, 'rgba(223, 173, 95, 0)');
-        atmoCtx.fillStyle = grad;
-        atmoCtx.beginPath();
-        atmoCtx.moveTo(originX - beamW * 0.2, -20);
-        atmoCtx.lineTo(originX + beamW * 0.35, -20);
-        atmoCtx.lineTo(originX - w * 0.32 + beamW, h);
-        atmoCtx.lineTo(originX - w * 0.52, h);
-        atmoCtx.closePath();
-        atmoCtx.fill();
-      }
-      atmoCtx.restore();
-
-      // 2. Floating Sunset Dust Motes (Rushing subtly with walking velocity)
-      const cx = w * 0.5;
-      const cy = h * 0.48;
-      for (let i = 0; i < dustMotes.length; i++) {
-        const m = dustMotes[i];
-        m.x += m.vx + (m.x - cx) * velocity * 0.6;
-        m.y += m.vy + (m.y - cy) * velocity * 0.6;
-        if (m.x < -10 || m.x > w + 10 || m.y < -10 || m.y > h + 10) {
-          m.x = Math.random() * w;
-          m.y = Math.random() * h;
-        }
-        atmoCtx.beginPath();
-        atmoCtx.arc(m.x, m.y, m.r, 0, Math.PI * 2);
-        atmoCtx.fillStyle = `rgba(244, 210, 146, ${m.a})`;
-        atmoCtx.fill();
-      }
-
-      // 3. Subtle Glowing Fire-Heater / Hookah Embers in Zones 3 & 4
-      const emberIntensity = Math.max(0, (progress - 0.45) / 0.55);
-      if (emberIntensity > 0.02) {
-        for (let i = 0; i < embers.length; i++) {
-          const e = embers[i];
-          e.y += e.vy;
-          e.x += Math.sin(frameTime * 2 + e.drift) * 0.45;
-          if (e.y < h * 0.2) {
-            e.y = h + 10;
-            e.x = Math.random() * w;
-          }
-          atmoCtx.beginPath();
-          atmoCtx.arc(e.x, e.y, e.r, 0, Math.PI * 2);
-          atmoCtx.fillStyle = `rgba(255, 138, 48, ${e.a * emberIntensity})`;
-          atmoCtx.fill();
-        }
-      }
-    }
-
-    /* ============================================================
-       6. MASTER 60FPS ANIMATION LOOP
-       ============================================================ */
-    function animateWorld() {
-      requestAnimationFrame(animateWorld);
-
-      const prevP = currentProgress;
-      currentProgress += (targetProgress - currentProgress) * 0.075;
-      walkVelocity = currentProgress - prevP;
-
-      currentPanX += (targetPanX - currentPanX) * 0.05;
-      currentPanY += (targetPanY - currentPanY) * 0.05;
-
-      // Active Zone Index (0..3)
       const zIdx = Math.min(3, Math.floor(currentProgress * 4));
       updateActiveZoneUI(zIdx);
 
-      // Crossfade + Continuous Forward Z-Zoom + Subtle Camera Pan
       const centers = [0.0, 0.333, 0.666, 1.0];
       zoneEls.forEach((el, i) => {
         const delta = (currentProgress - centers[i]) * 3.0;
         const dist = Math.abs(delta);
-
         let opacity = Math.max(0, 1 - dist * 1.15);
         if (i === 0 && currentProgress < 0.06) opacity = 1;
         if (i === 3 && currentProgress > 0.92) opacity = 1;
 
-        const scale = 1.04 + Math.max(-0.14, delta * 0.34);
-        const panX = -currentPanX * 16;
-        const panY = -currentPanY * 10;
-        const blur = dist > 0.58 ? (dist - 0.58) * 7 : 0;
-
+        if (opacity <= 0.01) {
+          el.style.visibility = 'hidden';
+          return;
+        }
+        el.style.visibility = 'visible';
         el.style.opacity = opacity.toFixed(3);
-        el.style.transform = `translate3d(${panX.toFixed(1)}px, ${panY.toFixed(1)}px, 0) scale(${scale.toFixed(4)})`;
-        el.style.filter = blur > 0.25 ? `blur(${blur.toFixed(1)}px)` : 'none';
+        el.style.transform = 'none';
       });
-
-      drawAtmosphere(currentProgress, walkVelocity);
     }
 
     /* ============================================================
-       7. APPLE VISION PRO 3D TILT INSPECTION MODAL
+       6. 3D DISH INSPECTION MODAL
        ============================================================ */
     const inspectModal = document.getElementById('inspect-modal');
     const inspectCard3D = document.getElementById('inspect-card-3d');
     const inspectGlare = document.getElementById('inspect-glare');
-    let currentHotspotInspect = null;
+    let inspectedItemId = null;
 
-    function openInspectModal(hs) {
-      currentHotspotInspect = hs;
-      const info = getHotspotDetails(hs);
+    function openInspectModal(hs, item) {
+      inspectedItemId = item.id;
       const t = I18N[currentLang];
+      const catObj = MENU_CATEGORIES.find((c) => c.id === item.cat);
 
       const img = document.getElementById('ins-img');
-      img.style.display = 'block';
-      img.src = info.img;
-      img.alt = info.display.name;
-      img.onerror = function () {
-        this.style.display = 'none';
-        this.parentElement.style.background = info.fallback;
-      };
+      img.src = hs.img;
+      img.alt = currentLang === 'ar' ? item.ar : item.en;
 
-      document.getElementById('ins-badge').textContent = info.display.badge;
-      document.getElementById('ins-title').textContent = info.display.name;
-      document.getElementById('ins-meta').textContent = info.display.meta;
-      document.getElementById('ins-desc').textContent = info.display.desc;
-      document.getElementById('ins-tilt-hint').textContent = t.tiltHint;
-
-      if (info.type === 'menu') {
-        document.getElementById('ins-price').textContent = info.price.toFixed(2);
-        document.getElementById('ins-currency').textContent = t.currency;
-        document.getElementById('ins-cta-btn').textContent = t.addOrder;
-      } else {
-        document.getElementById('ins-price').textContent = info.priceText;
-        document.getElementById('ins-currency').textContent = 'VIP';
-        document.getElementById('ins-cta-btn').textContent = t.reserveSpot;
-      }
+      document.getElementById('ins-badge').textContent = currentLang === 'ar' ? hs.badgeAr : hs.badgeEn;
+      document.getElementById('ins-title').textContent = currentLang === 'ar' ? item.ar : item.en;
+      document.getElementById('ins-cat-label').textContent = catObj ? (currentLang === 'ar' ? catObj.ar : catObj.en) : '';
+      document.getElementById('ins-price').textContent = item.price.toFixed(2);
+      document.getElementById('ins-currency').textContent = t.currency;
+      document.getElementById('ins-desc').textContent = (currentLang === 'ar' ? item.descAr : item.descEn) || (currentLang === 'ar' ? 'يُحضّر طازجاً في شمسة روف توب - خلدا' : 'Freshly prepared at Shamsa Rooftop - Khalda');
+      document.getElementById('ins-add-btn').textContent = t.addOrder;
 
       inspectCard3D.style.transform = 'rotateX(0deg) rotateY(0deg) scale(1)';
       inspectModal.classList.add('open');
@@ -1558,7 +1308,7 @@
 
     function closeInspectModal() {
       inspectModal.classList.remove('open');
-      currentHotspotInspect = null;
+      inspectedItemId = null;
     }
 
     document.getElementById('close-inspect-btn').addEventListener('click', closeInspectModal);
@@ -1566,113 +1316,176 @@
       if (e.target === inspectModal) closeInspectModal();
     });
 
-    document.getElementById('ins-cta-btn').addEventListener('click', () => {
-      if (!currentHotspotInspect) return;
-      if (currentHotspotInspect.type === 'menu') {
-        addToCart(currentHotspotInspect.itemId, 1);
-        showToast(I18N[currentLang].addedToast);
-        closeInspectModal();
-      } else {
-        const bZone = currentHotspotInspect.bookingZone;
-        closeInspectModal();
-        openBookingModal(null, bZone);
-      }
+    document.getElementById('ins-add-btn').addEventListener('click', () => {
+      if (!inspectedItemId) return;
+      addToCart(inspectedItemId, 1);
+      showToast(I18N[currentLang].addedToast);
+      closeInspectModal();
     });
 
-    // Real-Time 3D Card Tilt & Specular Glass Glare Sweep
-    function updateCard3DTilt(clientX, clientY) {
+    function tiltCard3D(xPos, yPos) {
       const rect = inspectCard3D.getBoundingClientRect();
-      const x = (clientX - rect.left) / rect.width;
-      const y = (clientY - rect.top) / rect.height;
-      const rotY = (x - 0.5) * 26;
-      const rotX = (0.5 - y) * 22;
-      const angle = Math.atan2(y - 0.5, x - 0.5) * (180 / Math.PI) + 90;
-
-      inspectCard3D.style.transition = 'transform 0.08s ease-out';
-      inspectCard3D.style.transform = `rotateX(${rotX.toFixed(2)}deg) rotateY(${rotY.toFixed(2)}deg) scale(1.02)`;
-
+      const x = (xPos - rect.left) / rect.width;
+      const y = (yPos - rect.top) / rect.height;
+      const rotY = (x - 0.5) * 20;
+      const rotX = (0.5 - y) * 16;
+      inspectCard3D.style.transform = `rotateX(${rotX.toFixed(1)}deg) rotateY(${rotY.toFixed(1)}deg) scale(1.01)`;
       inspectGlare.style.opacity = '1';
-      inspectGlare.style.background = `
-        radial-gradient(circle at ${(x * 100).toFixed(1)}% ${(y * 100).toFixed(1)}%, rgba(255, 248, 232, 0.34) 0%, rgba(223, 173, 95, 0.14) 28%, transparent 62%),
-        linear-gradient(${angle.toFixed(0)}deg, rgba(255,255,255,0.16) 0%, transparent 45%)
-      `;
+      inspectGlare.style.background = `radial-gradient(circle at ${(x * 100).toFixed(0)}% ${(y * 100).toFixed(0)}%, rgba(255,255,255,0.28), transparent 60%)`;
     }
 
-    function resetCard3DTilt() {
-      inspectCard3D.style.transition = 'transform 0.45s cubic-bezier(0.22, 1, 0.36, 1)';
+    inspectCard3D.addEventListener('mousemove', (e) => tiltCard3D(e.clientX, e.clientY));
+    inspectCard3D.addEventListener('mouseleave', () => {
       inspectCard3D.style.transform = 'rotateX(0deg) rotateY(0deg) scale(1)';
       inspectGlare.style.opacity = '0';
-    }
-
-    inspectCard3D.addEventListener('mousemove', (e) => updateCard3DTilt(e.clientX, e.clientY));
-    inspectCard3D.addEventListener('mouseleave', resetCard3DTilt);
+    });
     inspectCard3D.addEventListener('touchmove', (e) => {
-      if (e.touches.length === 1) updateCard3DTilt(e.touches[0].clientX, e.touches[0].clientY);
+      if (e.touches.length === 1) tiltCard3D(e.touches[0].clientX, e.touches[0].clientY);
     }, { passive: true });
-    inspectCard3D.addEventListener('touchend', resetCard3DTilt);
+    inspectCard3D.addEventListener('touchend', () => {
+      inspectCard3D.style.transform = 'rotateX(0deg) rotateY(0deg) scale(1)';
+      inspectGlare.style.opacity = '0';
+    });
 
     /* ============================================================
-       8. FULL MENU DRAWER + SMART BILL CALCULATOR
+       7. OFFICIAL SHAMSA MENU DRAWER + SCROLL-SPY + ORDER CALCULATOR
        ============================================================ */
     const cart = {};
     let activeMenuCat = 'all';
+    let menuSearchQuery = '';
+    const menuItemsContainer = document.getElementById('menu-items-container');
+    const menuCatsBar = document.getElementById('menu-cats-bar');
 
-    function renderMenuDrawer() {
-      const t = I18N[currentLang];
-      const catsBar = document.getElementById('menu-cats-bar');
-      catsBar.innerHTML = t.menuCats.map((c) => `
-        <button onclick="setMenuCategory('${c.id}')" class="whitespace-nowrap px-3.5 py-1.5 rounded-xl text-xs font-extrabold border transition ${
-          c.id === activeMenuCat
-            ? 'bg-gold text-obsidian border-gold'
-            : 'bg-white/5 border-white/10 text-cream/80 hover:bg-white/10'
-        }">${c.label}</button>
+    function highlightCategoryTab(catId) {
+      menuCatsBar.querySelectorAll('[data-cat-tab]').forEach((btn) => {
+        const isCurrent = btn.dataset.catTab === catId;
+        btn.className = isCurrent
+          ? 'whitespace-nowrap px-3.5 py-1.5 rounded-full text-xs font-extrabold bg-sage text-ivory shadow-sm transition shrink-0'
+          : 'whitespace-nowrap px-3.5 py-1.5 rounded-full text-xs font-bold bg-ivory text-oliveMuted border border-sage/20 hover:border-sage/50 transition shrink-0';
+        if (isCurrent) {
+          btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        }
+      });
+    }
+
+    function renderMenuCategoriesBar() {
+      menuCatsBar.innerHTML = MENU_CATEGORIES.map((c) => `
+        <button type="button" data-cat-tab="${c.id}" onclick="selectMenuCat('${c.id}')" class="whitespace-nowrap px-3.5 py-1.5 rounded-full text-xs font-bold bg-ivory text-oliveMuted border border-sage/20 transition shrink-0">
+          ${currentLang === 'ar' ? c.ar : c.en}
+        </button>
       `).join('');
-
-      const list = document.getElementById('menu-items-container');
-      const items = activeMenuCat === 'all' ? MENU_ITEMS : MENU_ITEMS.filter((i) => i.cat === activeMenuCat);
-
-      list.innerHTML = items.map((item) => {
-        const d = item[currentLang];
-        const qty = cart[item.id] || 0;
-        return `
-          <div class="glass-nav rounded-2xl p-3 flex items-center gap-3">
-            <div class="w-20 h-20 rounded-xl overflow-hidden shrink-0 bg-[#141519]">
-              <img src="${item.img}" alt="${d.name}" class="w-full h-full object-cover" loading="lazy" onerror="this.style.display='none'; this.parentElement.style.background='${item.fallback}';" />
-            </div>
-            <div class="flex-1 min-w-0">
-              <div class="flex items-center justify-between gap-2">
-                <h4 class="text-sm font-extrabold text-cream truncate">${d.name}</h4>
-              </div>
-              <p class="text-[11px] text-cream/65 line-clamp-2 mt-0.5">${d.desc}</p>
-              <div class="flex items-center justify-between mt-2">
-                <span class="text-sm font-black text-goldLight">${item.price.toFixed(2)} ${t.currency}</span>
-                ${
-                  qty === 0
-                    ? `<button onclick="addToCart('${item.id}', 1)" class="px-3 py-1.5 rounded-xl bg-gold/20 hover:bg-gold hover:text-obsidian border border-gold/45 text-[11px] font-black text-goldLight transition">+ ${currentLang === 'ar' ? 'أضف' : 'Add'}</button>`
-                    : `<div class="flex items-center gap-2 bg-black/55 border border-white/15 rounded-xl p-1">
-                        <button onclick="addToCart('${item.id}', -1)" class="w-6 h-6 rounded-lg bg-white/10 text-cream font-black text-xs">-</button>
-                        <span class="text-xs font-black text-cream w-4 text-center">${qty}</span>
-                        <button onclick="addToCart('${item.id}', 1)" class="w-6 h-6 rounded-lg bg-gold text-obsidian font-black text-xs">+</button>
-                      </div>`
-                }
-              </div>
-            </div>
-          </div>
-        `;
-      }).join('');
+      highlightCategoryTab(activeMenuCat);
     }
 
-    function setMenuCategory(catId) {
+    function selectMenuCat(catId) {
       activeMenuCat = catId;
-      renderMenuDrawer();
+      renderMenuItems();
+      highlightCategoryTab(catId);
+      menuItemsContainer.scrollTop = 0;
     }
+
+    function renderMenuItems() {
+      const t = I18N[currentLang];
+      const q = menuSearchQuery.trim().toLowerCase();
+
+      const catsToRender = activeMenuCat === 'all'
+        ? MENU_CATEGORIES.filter((c) => c.id !== 'all')
+        : MENU_CATEGORIES.filter((c) => c.id === activeMenuCat);
+
+      let html = '';
+      catsToRender.forEach((cat) => {
+        const items = SHAMSA_MENU.filter((item) => {
+          if (item.cat !== cat.id) return false;
+          if (!q) return true;
+          return (
+            item.ar.toLowerCase().includes(q) ||
+            item.en.toLowerCase().includes(q) ||
+            (item.descAr && item.descAr.toLowerCase().includes(q)) ||
+            (item.descEn && item.descEn.toLowerCase().includes(q))
+          );
+        });
+
+        if (items.length === 0) return;
+
+        html += `
+          <section data-menu-section="${cat.id}" class="space-y-2.5">
+            <div class="sticky top-0 z-10 py-1.5 bg-ivory/95 backdrop-blur-sm border-b border-sage/25 flex items-center justify-between">
+              <h3 class="font-editorial text-xl sm:text-2xl font-bold text-sage">${currentLang === 'ar' ? cat.ar : cat.en}</h3>
+              <span class="text-[11px] font-bold text-oliveMuted">${items.length}</span>
+            </div>
+            <div class="space-y-2.5">
+              ${items.map((item) => {
+                const qty = cart[item.id] || 0;
+                const name = currentLang === 'ar' ? item.ar : item.en;
+                const desc = currentLang === 'ar' ? item.descAr : item.descEn;
+                return `
+                  <div class="p-3 rounded-2xl bg-limestone/60 border border-sage/20 hover:border-sage/45 transition">
+                    <div class="flex items-baseline justify-between gap-2">
+                      <span class="text-xs sm:text-sm font-extrabold text-oliveInk">${name}</span>
+                      <span class="menu-leader"></span>
+                      <span class="text-xs sm:text-sm font-black text-sageDark whitespace-nowrap">${item.price.toFixed(2)} ${t.currency}</span>
+                    </div>
+                    ${desc ? `<p class="text-[11px] text-oliveMuted mt-1 leading-relaxed">${desc}</p>` : ''}
+                    <div class="mt-2 flex justify-end">
+                      ${
+                        qty === 0
+                          ? `<button type="button" onclick="addToCart('${item.id}', 1)" class="px-3 py-1 rounded-xl bg-sageSoft hover:bg-sage hover:text-ivory border border-sage/30 text-[11px] font-extrabold text-sageDark transition">+ ${currentLang === 'ar' ? 'أضف للطلب' : 'Add'}</button>`
+                          : `<div class="flex items-center gap-2 bg-ivory border border-sage/35 rounded-xl px-1.5 py-0.5">
+                              <button type="button" onclick="addToCart('${item.id}', -1)" class="w-6 h-6 rounded-lg bg-limestone text-oliveInk font-black text-xs">-</button>
+                              <span class="text-xs font-black text-oliveInk w-4 text-center">${qty}</span>
+                              <button type="button" onclick="addToCart('${item.id}', 1)" class="w-6 h-6 rounded-lg bg-sage text-ivory font-black text-xs">+</button>
+                            </div>`
+                      }
+                    </div>
+                  </div>
+                `;
+              }).join('')}
+            </div>
+          </section>
+        `;
+      });
+
+      menuItemsContainer.innerHTML = html || `<p class="text-center text-xs text-oliveMuted py-10">${currentLang === 'ar' ? 'لا توجد أصناف مطابقة للبحث' : 'No matching items found'}</p>`;
+    }
+
+    // Automatic Scroll-Spy inside Menu when viewing "All"
+    let scrollSpyLock = false;
+    menuItemsContainer.addEventListener('scroll', () => {
+      if (activeMenuCat !== 'all' || scrollSpyLock) return;
+      scrollSpyLock = true;
+      requestAnimationFrame(() => {
+        const sections = menuItemsContainer.querySelectorAll('[data-menu-section]');
+        const containerTop = menuItemsContainer.getBoundingClientRect().top;
+        let currentSection = 'tablieh';
+        sections.forEach((sec) => {
+          const rect = sec.getBoundingClientRect();
+          if (rect.top - containerTop <= 70) {
+            currentSection = sec.dataset.menuSection;
+          }
+        });
+        highlightCategoryTab(currentSection);
+        scrollSpyLock = false;
+      });
+    }, { passive: true });
+
+    document.getElementById('menu-search-input').addEventListener('input', (e) => {
+      menuSearchQuery = e.target.value;
+      renderMenuItems();
+    });
 
     function addToCart(itemId, delta) {
       const next = (cart[itemId] || 0) + delta;
       if (next <= 0) delete cart[itemId];
       else cart[itemId] = next;
       updateCartUI();
-      renderMenuDrawer();
+      renderMenuItems();
+    }
+
+    function clearCart() {
+      Object.keys(cart).forEach((k) => delete cart[k]);
+      updateCartUI();
+      renderMenuItems();
+      closeOrderModal();
     }
 
     function updateCartUI() {
@@ -1680,16 +1493,15 @@
       let total = 0;
       let count = 0;
       Object.entries(cart).forEach(([id, qty]) => {
-        const item = MENU_ITEMS.find((m) => m.id === id);
+        const item = SHAMSA_MENU.find((m) => m.id === id);
         if (item) {
           total += item.price * qty;
           count += qty;
         }
       });
 
-      document.getElementById('bill-subtotal-val').textContent = `${total.toFixed(2)} ${t.currency}`;
-      document.getElementById('bill-total-val').textContent = `${total.toFixed(2)} ${t.currency}`;
       document.getElementById('dock-total-jod').textContent = `${total.toFixed(2)} ${t.currency}`;
+      document.getElementById('drawer-total-val').textContent = `${total.toFixed(2)} ${t.currency}`;
 
       const badge = document.getElementById('dock-count-badge');
       badge.textContent = count;
@@ -1699,11 +1511,14 @@
     const menuDrawer = document.getElementById('menu-drawer');
     const menuOverlay = document.getElementById('menu-overlay');
 
-    function openMenuDrawer() {
-      renderMenuDrawer();
+    function openMenuDrawer(catPreset) {
+      if (catPreset) activeMenuCat = catPreset;
+      renderMenuCategoriesBar();
+      renderMenuItems();
       menuDrawer.classList.remove('translate-x-full');
       menuOverlay.classList.remove('opacity-0', 'pointer-events-none');
     }
+
     function closeMenuDrawer() {
       menuDrawer.classList.add('translate-x-full');
       menuOverlay.classList.add('opacity-0', 'pointer-events-none');
@@ -1712,108 +1527,113 @@
     document.getElementById('close-menu-btn').addEventListener('click', closeMenuDrawer);
     menuOverlay.addEventListener('click', closeMenuDrawer);
 
-    document.getElementById('send-order-wa-btn').addEventListener('click', () => {
+    /* ============================================================
+       8. ORDER SUMMARY & WHATSAPP SEND MODAL
+       ============================================================ */
+    const orderModal = document.getElementById('order-modal');
+
+    function openOrderModal() {
       const entries = Object.entries(cart);
+      const t = I18N[currentLang];
+      const listEl = document.getElementById('ord-items-list');
+      let total = 0;
+
       if (entries.length === 0) {
-        showToast(I18N[currentLang].emptyCartToast);
+        listEl.innerHTML = `<p class="text-center text-xs text-oliveMuted py-6">${t.emptyCart}</p>`;
+      } else {
+        listEl.innerHTML = entries.map(([id, qty]) => {
+          const item = SHAMSA_MENU.find((m) => m.id === id);
+          if (!item) return '';
+          const sub = item.price * qty;
+          total += sub;
+          return `
+            <div class="flex items-center justify-between py-2 border-b border-sage/15 text-xs">
+              <span class="font-bold text-oliveInk">${currentLang === 'ar' ? item.ar : item.en} <span class="text-sageDark font-black">×${qty}</span></span>
+              <span class="font-black text-sageDark">${sub.toFixed(2)} ${t.currency}</span>
+            </div>
+          `;
+        }).join('');
+      }
+
+      document.getElementById('ord-total-val').textContent = `${total.toFixed(2)} ${t.currency}`;
+      orderModal.classList.remove('opacity-0', 'pointer-events-none');
+    }
+
+    function closeOrderModal() {
+      orderModal.classList.add('opacity-0', 'pointer-events-none');
+    }
+
+    orderModal.addEventListener('click', (e) => {
+      if (e.target === orderModal) closeOrderModal();
+    });
+
+    document.getElementById('ord-wa-btn').addEventListener('click', () => {
+      const entries = Object.entries(cart);
+      const t = I18N[currentLang];
+      if (entries.length === 0) {
+        showToast(t.emptyCart);
         return;
       }
-      const t = I18N[currentLang];
       let total = 0;
       const lines = currentLang === 'ar'
-        ? ['مرحباً شمسة روف توب - خلدا 🌅', 'أرغب بطلب الأصناف التالية:']
-        : ['Hello Shamsa Rooftop - Khalda 🌅', 'I would like to order the following items:'];
+        ? ['مرحباً شمسة روف توب - خلدا 🌿', 'أرغب بطلب الأصناف التالية:']
+        : ['Hello Shamsa Rooftop - Khalda 🌿', 'I would like to order:'];
 
       entries.forEach(([id, qty]) => {
-        const item = MENU_ITEMS.find((m) => m.id === id);
+        const item = SHAMSA_MENU.find((m) => m.id === id);
         if (item) {
           const sub = item.price * qty;
           total += sub;
-          lines.push(`• ${item[currentLang].name} × ${qty} = ${sub.toFixed(2)} ${t.currency}`);
+          lines.push(`• ${currentLang === 'ar' ? item.ar : item.en} × ${qty} = ${sub.toFixed(2)} ${t.currency}`);
         }
       });
       lines.push(currentLang === 'ar' ? `الإجمالي: ${total.toFixed(2)} د.أ` : `Total: ${total.toFixed(2)} JOD`);
       window.open(`https://wa.me/${CAFE_WHATSAPP}?text=${encodeURIComponent(lines.join('\n'))}`, '_blank', 'noopener');
     });
 
-    // Show to Waiter Clean Modal
-    const waiterModal = document.getElementById('waiter-modal');
-    document.getElementById('waiter-view-btn').addEventListener('click', () => {
-      const entries = Object.entries(cart);
-      if (entries.length === 0) {
-        showToast(I18N[currentLang].emptyCartToast);
-        return;
-      }
-      const t = I18N[currentLang];
-      let total = 0;
-      document.getElementById('waiter-items-list').innerHTML = entries.map(([id, qty]) => {
-        const item = MENU_ITEMS.find((m) => m.id === id);
-        const sub = item.price * qty;
-        total += sub;
-        return `
-          <div class="flex items-center justify-between py-2 border-b border-white/10">
-            <span class="font-bold text-cream">${item[currentLang].name} <span class="text-goldLight">×${qty}</span></span>
-            <span class="text-cream/80 font-bold">${sub.toFixed(2)} ${t.currency}</span>
-          </div>
-        `;
-      }).join('');
-      document.getElementById('waiter-total-val').textContent = `${total.toFixed(2)} ${t.currency}`;
-      waiterModal.classList.remove('opacity-0', 'pointer-events-none');
-    });
-
-    function closeWaiterModal() {
-      waiterModal.classList.add('opacity-0', 'pointer-events-none');
-    }
-
     /* ============================================================
-       9. SMART TABLE RESERVATION MODAL (WHATSAPP)
+       9. FLEXIBLE TABLE RESERVATION MODAL
        ============================================================ */
     const bookingModal = document.getElementById('booking-modal');
     let selectedBookingZoneId = 'pergola';
-    let selectedOccasionId = 'casual';
 
     const bkDateEl = document.getElementById('bk-date');
     const todayIso = new Date().toISOString().split('T')[0];
     bkDateEl.value = todayIso;
     bkDateEl.min = todayIso;
 
-    function renderBookingSelectors() {
+    function renderBookingZones() {
       const t = I18N[currentLang];
       document.getElementById('bk-zones-grid').innerHTML = t.bookingZones.map((z) => `
         <button type="button" onclick="selectBookingZone('${z.id}')" class="py-2.5 px-2 rounded-xl text-xs font-extrabold border transition text-center ${
           z.id === selectedBookingZoneId
-            ? 'border-gold bg-gold/20 text-cream'
-            : 'border-white/10 bg-white/5 text-cream/75 hover:bg-white/10'
+            ? 'border-sage bg-sage text-ivory shadow-sm'
+            : 'border-sage/25 bg-limestone/75 text-oliveInk hover:bg-sageSoft'
         }">${z.label}</button>
-      `).join('');
-
-      document.getElementById('bk-time').innerHTML = t.bookingTimes.map((tm, i) => `
-        <option value="${tm}" ${i === 0 ? 'selected' : ''}>${tm}</option>
-      `).join('');
-
-      document.getElementById('bk-occ-grid').innerHTML = t.occasions.map((o) => `
-        <button type="button" onclick="selectOccasion('${o.id}')" class="py-2 px-1.5 rounded-xl text-[11px] font-extrabold border transition text-center ${
-          o.id === selectedOccasionId
-            ? 'border-gold bg-gold/20 text-cream'
-            : 'border-white/10 bg-white/5 text-cream/75 hover:bg-white/10'
-        }">${o.label}</button>
       `).join('');
     }
 
     function selectBookingZone(id) {
       selectedBookingZoneId = id;
-      renderBookingSelectors();
+      renderBookingZones();
     }
 
-    function selectOccasion(id) {
-      selectedOccasionId = id;
-      renderBookingSelectors();
+    function setGuests(n) {
+      document.getElementById('bk-guests-input').value = Math.max(1, Math.min(50, n));
     }
 
-    function openBookingModal(occasionPreset, zonePreset) {
-      if (occasionPreset) selectedOccasionId = occasionPreset;
-      if (zonePreset) selectedBookingZoneId = zonePreset;
-      renderBookingSelectors();
+    function adjustGuests(delta) {
+      const inp = document.getElementById('bk-guests-input');
+      const cur = parseInt(inp.value || '4', 10);
+      setGuests(cur + delta);
+    }
+
+    function setBookingTime(val) {
+      document.getElementById('bk-time').value = val;
+    }
+
+    function openBookingModal() {
+      renderBookingZones();
       bookingModal.classList.remove('opacity-0', 'pointer-events-none');
     }
 
@@ -1830,22 +1650,22 @@
       e.preventDefault();
       const t = I18N[currentLang];
       const name = document.getElementById('bk-name').value.trim();
-      const guests = document.getElementById('bk-guests').value;
+      const guests = document.getElementById('bk-guests-input').value;
       const date = bkDateEl.value;
       const time = document.getElementById('bk-time').value;
+      const note = document.getElementById('bk-note').value.trim();
       const zoneObj = t.bookingZones.find((z) => z.id === selectedBookingZoneId);
-      const occObj = t.occasions.find((o) => o.id === selectedOccasionId);
 
       const msg = currentLang === 'ar'
-        ? `مرحباً شمسة روف توب - خلدا 🌅\nأرغب بحجز طاولة:\n• الاسم: ${name}\n• المنطقة: ${zoneObj.label}\n• عدد الأشخاص: ${guests}\n• التاريخ: ${date}\n• الوقت: ${time}\n• المناسبة: ${occObj.label}\nيرجى تأكيد الحجز، وشكراً!`
-        : `Hello Shamsa Rooftop - Khalda 🌅\nTable Reservation Request:\n• Name: ${name}\n• Zone: ${zoneObj.label}\n• Guests: ${guests}\n• Date: ${date}\n• Time: ${time}\n• Occasion: ${occObj.label}\nPlease confirm my booking. Thank you!`;
+        ? `مرحباً شمسة روف توب - خلدا 🌿\nأرغب بحجز طاولة:\n• الاسم: ${name}\n• المنطقة: ${zoneObj.label}\n• عدد الأشخاص: ${guests}\n• التاريخ: ${date}\n• الوقت: ${time}` + (note ? `\n• ملاحظة: ${note}` : '')
+        : `Hello Shamsa Rooftop - Khalda 🌿\nTable Reservation:\n• Name: ${name}\n• Area: ${zoneObj.label}\n• Guests: ${guests}\n• Date: ${date}\n• Time: ${time}` + (note ? `\n• Note: ${note}` : '');
 
       window.open(`https://wa.me/${CAFE_WHATSAPP}?text=${encodeURIComponent(msg)}`, '_blank', 'noopener');
       closeBookingModal();
     });
 
     /* ============================================================
-       10. QUICK TABLE SERVICE MODAL (TABLES 1–20 + CASH/VISA)
+       10. QUICK TABLE SERVICE MODAL (TABLES 1-20)
        ============================================================ */
     const serviceModal = document.getElementById('service-modal');
     let activeServiceMode = 'coal';
@@ -1853,19 +1673,18 @@
     let selectedPayMethod = 'cash';
 
     function renderTableGrid() {
-      const grid = document.getElementById('srv-tables-grid');
       let html = '';
       for (let i = 1; i <= 20; i++) {
         const active = i === selectedTableNum;
         html += `
           <button type="button" onclick="selectTableNum(${i})" class="py-2 rounded-xl text-xs font-black border transition ${
             active
-              ? 'bg-gold text-obsidian border-gold shadow-md'
-              : 'bg-white/5 border-white/10 text-cream/80 hover:bg-white/15'
+              ? 'bg-sage text-ivory border-sage shadow-sm'
+              : 'bg-limestone/75 border-sage/20 text-oliveInk hover:bg-sageSoft'
           }">${i}</button>
         `;
       }
-      grid.innerHTML = html;
+      document.getElementById('srv-tables-grid').innerHTML = html;
     }
 
     function selectTableNum(n) {
@@ -1875,14 +1694,12 @@
 
     function selectPayMethod(method) {
       selectedPayMethod = method;
-      const cashBtn = document.getElementById('pay-cash-btn');
-      const visaBtn = document.getElementById('pay-visa-btn');
-      cashBtn.className = method === 'cash'
-        ? 'py-2.5 rounded-xl text-xs font-extrabold border border-gold bg-gold/20 text-cream'
-        : 'py-2.5 rounded-xl text-xs font-extrabold border border-white/15 bg-white/5 text-cream/75';
-      visaBtn.className = method === 'visa'
-        ? 'py-2.5 rounded-xl text-xs font-extrabold border border-gold bg-gold/20 text-cream'
-        : 'py-2.5 rounded-xl text-xs font-extrabold border border-white/15 bg-white/5 text-cream/75';
+      document.getElementById('pay-cash-btn').className = method === 'cash'
+        ? 'py-2.5 rounded-xl text-xs font-extrabold border border-sage bg-sage text-ivory'
+        : 'py-2.5 rounded-xl text-xs font-extrabold border border-sage/25 bg-limestone text-oliveInk';
+      document.getElementById('pay-visa-btn').className = method === 'visa'
+        ? 'py-2.5 rounded-xl text-xs font-extrabold border border-sage bg-sage text-ivory'
+        : 'py-2.5 rounded-xl text-xs font-extrabold border border-sage/25 bg-limestone text-oliveInk';
     }
 
     function openServiceModal(mode) {
@@ -1923,7 +1740,7 @@
     });
 
     /* ============================================================
-       11. INSTANT BILINGUAL ENGINE (AR RTL <-> EN LTR)
+       11. INSTANT BILINGUAL TOGGLE (AR / EN)
        ============================================================ */
     function setLanguage(lang) {
       currentLang = lang;
@@ -1932,41 +1749,32 @@
       html.lang = lang;
       html.dir = lang === 'ar' ? 'rtl' : 'ltr';
 
-      // Update Toggle Pill Active Styles
       const btnAr = document.getElementById('lang-btn-ar');
       const btnEn = document.getElementById('lang-btn-en');
       if (lang === 'ar') {
-        btnAr.className = 'px-2.5 sm:px-3 py-1 rounded-full text-[11px] font-extrabold transition bg-gold text-obsidian shadow';
-        btnEn.className = 'px-2.5 sm:px-3 py-1 rounded-full text-[11px] font-extrabold tracking-wider transition text-cream/65 hover:text-cream';
+        btnAr.className = 'px-2.5 sm:px-3 py-1 rounded-full text-[11px] font-extrabold transition bg-sage text-ivory shadow-sm';
+        btnEn.className = 'px-2.5 sm:px-3 py-1 rounded-full text-[11px] font-extrabold tracking-wider transition text-oliveMuted hover:text-oliveInk';
       } else {
-        btnEn.className = 'px-2.5 sm:px-3 py-1 rounded-full text-[11px] font-extrabold tracking-wider transition bg-gold text-obsidian shadow';
-        btnAr.className = 'px-2.5 sm:px-3 py-1 rounded-full text-[11px] font-extrabold transition text-cream/65 hover:text-cream';
+        btnEn.className = 'px-2.5 sm:px-3 py-1 rounded-full text-[11px] font-extrabold tracking-wider transition bg-sage text-ivory shadow-sm';
+        btnAr.className = 'px-2.5 sm:px-3 py-1 rounded-full text-[11px] font-extrabold transition text-oliveMuted hover:text-oliveInk';
       }
 
-      // Navbar & Hint
       document.getElementById('nav-live-status').textContent = t.liveStatus;
-      document.getElementById('nav-event-badge').textContent = t.eventBadge;
-      document.getElementById('walk-hint-text').textContent = t.walkHint;
+      document.getElementById('dessert-spotlight-text').textContent = t.dessertSpotlight;
+      document.getElementById('welcome-spotlight-text').textContent = t.welcomeSpotlight;
 
-      // Bottom Dock Labels
       document.querySelectorAll('[data-i18n]').forEach((el) => {
         const key = el.getAttribute('data-i18n');
         if (t[key]) el.textContent = t[key];
       });
 
-      // Menu Drawer Labels
       document.getElementById('drawer-heading').textContent = t.drawerHeading;
       document.getElementById('drawer-sub').textContent = t.drawerSub;
-      document.getElementById('bill-subtotal-label').textContent = t.billSubtotal;
-      document.getElementById('bill-service-label').textContent = t.billService;
-      document.getElementById('bill-service-val').textContent = t.billServiceVal;
-      document.getElementById('bill-total-label').textContent = t.billTotal;
-      document.getElementById('send-order-wa-btn').textContent = t.sendOrderWa;
-      document.getElementById('waiter-view-btn').textContent = t.waiterView;
-      document.getElementById('waiter-title').textContent = t.waiterTitle;
-      document.getElementById('waiter-total-lbl').textContent = t.waiterTotal;
+      document.getElementById('drawer-map-label').textContent = t.drawerMap;
+      document.getElementById('menu-search-input').placeholder = t.searchPlaceholder;
+      document.getElementById('drawer-total-lbl').textContent = t.drawerTotalLbl;
+      document.getElementById('drawer-review-btn').textContent = t.drawerReviewBtn;
 
-      // Reservation Modal Labels
       document.getElementById('bk-heading').textContent = t.bkHeading;
       document.getElementById('bk-sub').textContent = t.bkSub;
       document.getElementById('bk-zone-label').textContent = t.bkZoneLabel;
@@ -1975,25 +1783,30 @@
       document.getElementById('bk-guests-label').textContent = t.bkGuestsLabel;
       document.getElementById('bk-date-label').textContent = t.bkDateLabel;
       document.getElementById('bk-time-label').textContent = t.bkTimeLabel;
-      document.getElementById('bk-occ-label').textContent = t.bkOccLabel;
+      document.getElementById('bk-note-label').textContent = t.bkNoteLabel;
+      document.getElementById('bk-note').placeholder = t.bkNotePlaceholder;
       document.getElementById('bk-submit-btn').textContent = t.bkSubmit;
 
-      // Quick Service Modal Labels
       document.getElementById('srv-table-label').textContent = t.tableLabel;
       document.getElementById('srv-pay-label').textContent = t.payLabel;
       document.getElementById('pay-cash-btn').textContent = t.payCash;
       document.getElementById('pay-visa-btn').textContent = t.payVisa;
       document.getElementById('srv-send-btn').textContent = t.srvSend;
 
-      // Refresh Active Zone Text, Hotspots, Menu & Cart
+      document.getElementById('ord-title').textContent = t.ordTitle;
+      document.getElementById('ord-total-lbl').textContent = t.ordTotalLbl;
+      document.getElementById('ord-wa-btn').textContent = t.ordWaBtn;
+      document.getElementById('ord-clear-btn').textContent = t.ordClearBtn;
+
       const zIdx = Math.max(0, activeZoneIdx);
       document.getElementById('zone-kicker').textContent = t.zones[zIdx].kicker;
       document.getElementById('zone-headline').textContent = t.zones[zIdx].title;
       document.getElementById('zone-subline').textContent = t.zones[zIdx].sub;
 
       renderHotspots();
-      renderMenuDrawer();
-      renderBookingSelectors();
+      renderMenuCategoriesBar();
+      renderMenuItems();
+      renderBookingZones();
       updateCartUI();
     }
 
@@ -2001,23 +1814,19 @@
       const toast = document.getElementById('toast');
       toast.textContent = msg;
       toast.classList.remove('opacity-0', '-translate-y-2');
-      setTimeout(() => toast.classList.add('opacity-0', '-translate-y-2'), 2400);
+      setTimeout(() => toast.classList.add('opacity-0', '-translate-y-2'), 2200);
     }
 
-    window.addEventListener('resize', resizeAtmoCanvas);
-
     /* ============================================================
-       12. BOOTSTRAP & 1.4S CINEMATIC PRELOADER REVEAL
+       12. BOOTSTRAP ON LOAD
        ============================================================ */
     window.onload = function () {
-      initAtmosphere();
       setLanguage('ar');
       updateActiveZoneUI(0);
-      animateWorld();
-
+      animate();
       setTimeout(() => {
         document.getElementById('preloader').classList.add('curtain-up');
-      }, 1400);
+      }, 950);
     };
   </script>
 </body>
